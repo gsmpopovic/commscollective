@@ -4,7 +4,7 @@
    ============================================ */
 
 :root {
-  --bg: #F6F6F3;
+  --bg: #F5F4F0;
   --text: #1B2230;
   --text-secondary: #555;
   --text-muted: #6b7280;
@@ -359,12 +359,12 @@ a:focus-visible {
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-2xl) var(--space-md) var(--space-4xl);
+  padding: var(--space-lg) var(--space-md) var(--space-4xl);
 }
 
 @media (min-width: 768px) {
   main {
-    padding: var(--space-3xl) var(--space-xl) var(--space-4xl);
+    padding: var(--space-xl) var(--space-xl) var(--space-4xl);
   }
 }
 
@@ -374,12 +374,12 @@ main.wide {
 
 /* ----- Hero ----- */
 .hero {
-  min-height: 38vh;
-  padding: var(--space-4xl) var(--space-lg);
+  min-height: 0;
+  padding: var(--space-xl) var(--space-lg) var(--space-3xl);
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background: var(--bg);
 }
@@ -392,7 +392,7 @@ main.wide {
 
 .hero-logo {
   display: block;
-  height: clamp(6rem, 22vmin, 12rem);
+  height: clamp(10rem, 32vmin, 20rem);
   width: auto;
   margin: 0 auto;
   object-fit: contain;
@@ -418,12 +418,11 @@ main.wide {
 
 @media (min-width: 768px) {
   .hero {
-    min-height: 42vh;
-    padding: var(--space-4xl) 0 5rem;
+    padding: var(--space-2xl) 0 var(--space-4xl);
   }
 
   .hero-logo {
-    height: clamp(7rem, 26vmin, 14rem);
+    height: clamp(12rem, 38vmin, 26rem);
   }
 
   .hero .tagline {
