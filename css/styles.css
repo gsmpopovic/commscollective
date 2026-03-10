@@ -368,6 +368,14 @@ main.wide {
   text-align: center;
 }
 
+.hero-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm);
+  font-weight: 600;
+}
+
 .hero .tagline {
   font-size: var(--text-xl);
   line-height: var(--line-height-relaxed);
@@ -574,6 +582,49 @@ main.wide {
   margin-bottom: var(--space-xs);
 }
 
+/* ----- Calendar page ----- */
+.calendar-intro {
+  margin-bottom: var(--space-xl);
+}
+
+.calendar-month {
+  font-size: var(--text-lg);
+  margin: var(--space-xl) 0 var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.calendar-month:first-of-type {
+  margin-top: 0;
+}
+
+.calendar-dates {
+  list-style: none;
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+}
+
+.calendar-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: var(--text-base);
+}
+
+.calendar-date {
+  flex-shrink: 0;
+  min-width: 4.5rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+.calendar-label {
+  color: var(--text);
+}
+
 /* ----- CTA block ----- */
 .cta-block {
   text-align: center;
@@ -621,6 +672,20 @@ main.wide {
 .cta-block .btn:focus-visible {
   outline: 2px solid var(--text);
   outline-offset: 4px;
+}
+
+/* Outlined (minimal) button variant */
+.btn-outline {
+  background: transparent !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+}
+
+.btn-outline:hover {
+  background: var(--border-light) !important;
+  color: var(--text) !important;
+  border-color: var(--text);
+  box-shadow: none;
 }
 
 /* ----- Form ----- */

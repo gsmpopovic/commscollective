@@ -1,26 +1,47 @@
 [
   {
-    "slug": "camila",
-    "name": "Camila Costa",
-    "role": "Co-founder & Strategy",
-    "bio": "Camila works with NGOs and foundations on narrative and campaign strategy. She started the collective to create a space where communicators could learn from each other without the usual posturing.",
-    "image": "images/team/camila.jpg",
-    "bioPage": "team/camila.html"
+    "slug": "camilla",
+    "name": "Camilla Davila",
+    "role": "Founder & Chief Strategist",
+    "bio": "Camilla founded the Comms Collective to create a space where communications professionals could connect, learn, and grow together. She leads strategy and vision for the network.",
+    "image": "images/team/camilla.jpg",
+    "bioPage": "team/camilla.html",
+    "contact": ""
   },
   {
-    "slug": "anna",
-    "name": "Anna Vandenberghe",
-    "role": "Co-founder & Content",
-    "bio": "Anna is a writer and editor focused on EU policy and advocacy. She believes good communication starts with clarity and honesty—and that both are skills we can practise.",
-    "image": "images/team/anna.jpg",
-    "bioPage": "team/anna.html"
+    "slug": "celeste",
+    "name": "Celeste Alvi",
+    "role": "Partnerships and Innovation",
+    "bio": "Celeste builds partnerships and explores new ways for the collective to collaborate with organisations and practitioners across Brussels and beyond.",
+    "image": "images/team/celeste.jpg",
+    "bioPage": "team/celeste.html",
+    "contact": ""
   },
   {
-    "slug": "sophie",
-    "name": "Sophie Laurent",
-    "role": "Events & Community",
-    "bio": "Sophie runs events and partnerships for the collective. She has a background in public affairs and now helps organisations tell their stories in ways that resonate.",
-    "image": "images/team/sophie.jpg",
-    "bioPage": "team/sophie.html"
+    "slug": "paula",
+    "name": "Paula Ritter-Moschütz",
+    "role": "Digital Engagement & Editorial",
+    "bio": "Paula leads digital engagement and editorial direction, ensuring the collective's voice is clear, consistent, and impactful across channels.",
+    "image": "images/team/paula.jpg",
+    "bioPage": "team/paula.html",
+    "contact": ""
+  },
+  {
+    "slug": "eleanor",
+    "name": "Eleanor Mee",
+    "role": "Finance & Brand Strategy",
+    "bio": "Eleanor oversees finance and brand strategy, helping the collective operate sustainably while staying true to its values and identity.",
+    "image": "images/team/eleanor.jpg",
+    "bioPage": "team/eleanor.html",
+    "contact": ""
+  },
+  {
+    "slug": "simone",
+    "name": "Simone Manlove",
+    "role": "Data & Development Strategy",
+    "bio": "Simone drives data and development strategy, using insights and planning to help the collective evolve and respond to members' needs.",
+    "image": "images/team/simone.jpg",
+    "bioPage": "team/simone.html",
+    "contact": ""
   }
 ]

@@ -1,6 +1,6 @@
 # The Comms Collective — Website
 
-Production-ready static website for The Comms Collective, a Brussels-based communications collective. Editorial design, mobile-first, with events and resources loaded from JSON so non-technical editors can update content without touching HTML.
+A clean, minimalist static website for The Comms Collective—a Brussels-based network for communications professionals. Editorial design, mobile-first, with events and resources loaded from JSON. No backend, no database; deploy to GitHub Pages or Cloudflare Pages.
 
 ---
 
@@ -8,12 +8,13 @@ Production-ready static website for The Comms Collective, a Brussels-based commu
 
 ```
 commscollective/
-├── index.html          # Home (hero, intro, events/resources highlights, team, CTA)
-├── about.html          # About (story, mission, values)
+├── index.html          # Home (hero, Who We Are, events/resources preview, core members, CTA)
+├── about.html          # About / Who We Are
 ├── events.html         # Events (loaded from data/events.json)
 ├── resources.html      # Resources (loaded from data/resources.json)
+├── calendar.html       # Brussels key dates (loaded from data/calendar.json)
 ├── team.html           # Team grid (loaded from data/team.json)
-├── contact.html        # Contact form (FormSubmit → ccbxl@gmail.com)
+├── contact.html        # Contact / Join (FormSubmit → ccbxl@gmail.com)
 ├── .nojekyll           # Tells GitHub Pages to serve files as-is
 ├── README.md
 ├── css/
@@ -22,27 +23,31 @@ commscollective/
 │   ├── main.js         # Mobile nav toggle
 │   ├── events.js       # Load and render events
 │   ├── resources.js    # Load and render resources
+│   ├── calendar.js     # Load and render key dates
 │   ├── team.js         # Load and render team grid
 │   └── home-highlights.js  # Home page event/resource previews
 ├── data/
-│   ├── events.json     # Event list (edit this to update events)
-│   ├── resources.json  # Resource list (edit this to update resources)
+│   ├── events.json     # Event list (edit to update events)
+│   ├── resources.json  # Resource list (edit to update resources)
+│   ├── calendar.json   # Brussels/EU key dates (holidays, plenary, etc.)
 │   └── team.json       # Team members (names, roles, bios, bio page links)
-├── team/               # Individual team bio pages
-│   ├── camila.html
-│   ├── anna.html
-│   └── sophie.html
+├── team/               # Individual team profile pages
+│   ├── camilla.html
+│   ├── celeste.html
+│   ├── paula.html
+│   ├── eleanor.html
+│   └── simone.html
 └── images/
-    └── team/           # Team photos (optional; place camila.jpg, anna.jpg, etc.)
+    └── team/           # Team photos (optional: camilla.jpg, celeste.jpg, etc.)
 ```
 
 ---
 
 ## Local development
 
-**The site must be served over HTTP.** Browsers block `fetch()` to local files when you open HTML directly (`file://`), so events, resources, and team data won’t load.
+**The site must be served over HTTP.** Browsers block `fetch()` when you open HTML via `file://`, so events, resources, and team data won’t load.
 
-Run a local server from the project folder, then open the URL in your browser:
+Run a local server from the project folder:
 
 ```bash
 # Option 1: npx (Node.js)
@@ -53,85 +58,66 @@ python3 -m http.server 8000
 # Then open http://localhost:8000
 ```
 
-If you open the site via `file://`, the pages will show a short message explaining this and how to fix it.
+If you open the site via `file://`, the pages show a short message explaining this and how to fix it.
 
 ---
 
-## Updating content (no code required)
+## Updating content
 
 ### Events
 
-Edit **`data/events.json`**. Each event has:
-
-- `title` — Event name  
-- `date` — ISO date (e.g. `"2026-05-12"`)  
-- `location` — e.g. `"Brussels"`  
-- `description` — Short description  
-- `link` — Optional signup or more-info URL (leave `""` if none)
-
-Add or remove objects in the array. Save, commit, and push; the site will show the new list after the next deploy.
+Edit **`data/events.json`**. Each event: `title`, `date` (ISO e.g. `"2026-05-12"`), `location`, `description`, `link` (optional URL).
 
 ### Resources
 
-Edit **`data/resources.json`**. Each resource has:
+Edit **`data/resources.json`**. Each resource: `title`, `category`, `description`, `link`.
 
-- `title` — Resource name  
-- `category` — e.g. `"Templates"`, `"Reading"`, `"Tools"`  
-- `description` — Short description  
-- `link` — URL to the resource
+### Calendar (Brussels key dates)
 
-Add or remove objects in the array. Save, commit, and push.
+Edit **`data/calendar.json`**. The `dates` array holds objects with `date` (ISO `YYYY-MM-DD`) and `label`. Used on the Calendar page and linked from Resources as “Brussels Comms Calendar”.
 
 ### Team
 
-- **Grid on Home and Team page:** Edit **`data/team.json`**. Each member has `slug`, `name`, `role`, `bio`, `image` (path under `images/team/`), and `bioPage` (e.g. `"team/camila.html"`).  
-- **Individual bio pages:** Duplicate an existing file in **`team/`** (e.g. `team/camila.html`), rename it (e.g. `team/jane.html`), and update the name, role, and bio text. Then add (or update) that member in **`data/team.json`** with the correct `bioPage` and optional `image`.
+- **Grid:** Edit **`data/team.json`** — `slug`, `name`, `role`, `bio`, `image`, `bioPage` (e.g. `"team/camilla.html"`).
+- **Profile pages:** Duplicate a file in **`team/`** (e.g. `team/camilla.html`), rename, update name/role/bio, then add the member in `team.json` with the correct `bioPage`.
 
 ### Team photos
 
-Place images in **`images/team/`** and use the same filenames as in `team.json` (e.g. `camila.jpg`, `anna.jpg`). If an image is missing, the site shows an initial placeholder.
+Place images in **`images/team/`** with filenames matching `team.json` (e.g. `camilla.jpg`). If missing, an initial placeholder is shown.
 
 ---
 
 ## Contact form
 
-The form on **Contact** submits to **FormSubmit** (`https://formsubmit.co/ccbxl@gmail.com`). Submissions are sent to **ccbxl@gmail.com**. No backend or server required.
-
-**First time only:** FormSubmit may send a one-time confirmation email to that address; confirm it to activate. No account needed.
+The Contact page form uses **FormSubmit** (`https://formsubmit.co/ccbxl@gmail.com`). Submissions go to **ccbxl@gmail.com**. No backend required. Confirm the one-time FormSubmit email to that address when first using it.
 
 ---
 
-## Deployment
+## Deploy to GitHub Pages
 
-### GitHub Pages
+1. Push this project to a GitHub repository.
+2. In the repo go to **Settings → Pages**.
+3. Under **Build and deployment**:
+   - **Source:** Deploy from a branch.
+   - **Branch:** `main` (or your default branch).
+   - **Folder:** `/ (root)`.
+4. Save. The site will be at `https://<username>.github.io/<repo>/`.
+5. Optional: set a custom domain under **Pages** settings.
 
-1. Push the project to a GitHub repository.  
-2. In the repo: **Settings → Pages**.  
-3. **Source:** Deploy from a branch.  
-4. **Branch:** `main` (or your default branch). **Folder:** `/ (root)`.  
-5. Save. The site will be at `https://<username>.github.io/<repo>/`.  
-6. Optional: add a custom domain under **Pages** settings.
+No build step. The site is static HTML, CSS, and JS; GitHub serves the files as-is. The `.nojekyll` file ensures Jekyll does not process the repo.
 
-No build step. The site is static HTML, CSS, and JS; GitHub serves the files as-is (`.nojekyll` ensures Jekyll doesn’t process the repo).
+### Deploy to Cloudflare Pages
 
-### Cloudflare Pages
-
-1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com) → **Pages** → **Create project** → **Connect to Git**.  
-2. Select the repository.  
-3. **Build settings:**  
-   - Build command: leave empty (or “None”).  
-   - Build output directory: `/` (root).  
-4. Deploy. The site will be at `https://<project>.pages.dev`.  
-5. Optional: add a custom domain in the project settings.
+1. [Cloudflare Dashboard](https://dash.cloudflare.com) → **Pages** → **Create project** → **Connect to Git**.
+2. Select the repository.
+3. **Build:** Build command empty; **Build output directory:** `/` (root).
+4. Deploy. Site at `https://<project>.pages.dev`; you can add a custom domain.
 
 ---
 
 ## Tech stack
 
-- **HTML** — Semantic, accessible markup.  
-- **CSS** — One stylesheet (`css/styles.css`): variables, typography, layout, responsive (mobile-first), collapsible nav.  
-- **JavaScript** — Minimal: nav toggle, and fetching/rendering of `events.json`, `resources.json`, and `team.json`. No frameworks.  
-- **Fonts** — Playfair Display (headlines), Inter (body), loaded from Google Fonts.  
-- **Colors** — Off-white `#F6F6F3`, navy text `#1B2230`, secondary text `#555`, thin dividers.
-
-The site is static, fast, and works without JavaScript for core content (only events, resources, and team grids need JS to populate).
+- **HTML** — Semantic, accessible markup.
+- **CSS** — Single stylesheet: off-white `#F6F6F3`, navy `#1B2230`, Playfair Display + Inter, responsive, minimal buttons.
+- **JavaScript** — Nav toggle; fetch and render from `events.json`, `resources.json`, `team.json`. No frameworks.
+- **Hosting** — Static only; GitHub Pages or Cloudflare Pages.

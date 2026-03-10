@@ -1,0 +1,27 @@
+{
+  "year": 2026,
+  "title": "Brussels key dates",
+  "description": "EU and Belgian institutional and public holidays for communications planning.",
+  "dates": [
+    { "date": "2026-01-01", "label": "New Year's Day" },
+    { "date": "2026-01-12", "label": "EP Plenary Session" },
+    { "date": "2026-02-09", "label": "EP Plenary Session" },
+    { "date": "2026-03-23", "label": "European Council Meeting" },
+    { "date": "2026-04-05", "label": "Easter Sunday" },
+    { "date": "2026-04-06", "label": "Easter Monday" },
+    { "date": "2026-04-20", "label": "EP Plenary Session" },
+    { "date": "2026-05-01", "label": "Labour Day" },
+    { "date": "2026-05-14", "label": "Ascension Day" },
+    { "date": "2026-05-24", "label": "Whit Sunday" },
+    { "date": "2026-05-25", "label": "Whit Monday" },
+    { "date": "2026-06-15", "label": "European Commission College Meeting" },
+    { "date": "2026-07-21", "label": "Belgian National Day" },
+    { "date": "2026-08-15", "label": "Assumption Day" },
+    { "date": "2026-09-14", "label": "EP Plenary Session" },
+    { "date": "2026-10-26", "label": "European Council Meeting" },
+    { "date": "2026-11-01", "label": "All Saints' Day" },
+    { "date": "2026-11-11", "label": "Armistice Day" },
+    { "date": "2026-12-14", "label": "EP Plenary Session" },
+    { "date": "2026-12-25", "label": "Christmas Day" }
+  ]
+}
