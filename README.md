@@ -4,6 +4,29 @@ Static website for The Comms Collective (Brussels). **Content is separated from 
 
 ---
 
+## Build (Vite + HTML partials)
+
+The site uses **Vite** as a tiny static builder: HTML is processed with **EJS** at build time so shared chunks (header, footer) live in **partials**. No React, no runtime—just static output.
+
+```bash
+npm install
+npm run build
+```
+
+Output is in **`dist/`**: plain HTML, CSS, JS, and assets. Deploy `dist/` to Netlify, Vercel, Cloudflare Pages, or GitHub Pages.
+
+- **Dev:** `npm run dev` — Vite dev server with EJS partials applied.
+- **Preview build:** `npm run preview` — serves `dist/` locally.
+
+### Partials
+
+- **`partials/header.html`** — Skip link, logo, nav (uses `basePath` and `currentPage`).
+- **`partials/footer.html`** — Brand, nav links, email.
+
+Pages include them with `<%- include(partialPath + '/header.html') %>`. Root pages use `partials/`, team pages use `../partials/`; the build injects `basePath` and `currentPage` so links and `aria-current` stay correct.
+
+---
+
 ## Project structure (root = site)
 
 The website lives at the **repository root**. No `site/` subfolder.
@@ -17,10 +40,15 @@ The website lives at the **repository root**. No `site/` subfolder.
 ├── team.html
 ├── contact.html
 ├── calendar.html
+├── partials/
+│   ├── header.html        ← Shared header (nav, logo)
+│   ├── footer.html        ← Shared footer
+│   └── layout.html        ← Optional base layout (reference)
 ├── favicon.svg
 ├── robots.txt
 ├── sitemap.xml
-├── .nojekyll              ← Tells GitHub Pages not to run Jekyll
+├── vite.config.js         ← Vite + EJS HTML plugin
+├── package.json
 ├── CONTENT.md             ← How to edit content (JSON)
 ├── css/
 │   └── styles.css
@@ -57,16 +85,21 @@ See **`CONTENT.md`** for field descriptions, examples, and step-by-step instruct
 
 ---
 
-## Deploy to GitHub Pages
+## Deploy to GitHub Pages (or elsewhere)
 
-1. Push the repo to GitHub.
-2. **Settings → Pages** → **Build and deployment**:
-   - **Source:** Deploy from a branch.
-   - **Branch:** `main` (or your default).
-   - **Folder:** **`/ (root)`**.
-3. Save. The site will be at `https://<username>.github.io/<repo>/`.
+**Option A — Deploy the built output**
 
-No build step. After deployment, edit the JSON files in `data/`, commit, and push; Pages will redeploy automatically.
+1. Run `npm run build`. The static site is in **`dist/`**.
+2. Deploy `dist/` to your host (e.g. GitHub Pages: use a branch or Action that builds and publishes `dist/`).
+
+**Option B — Build on the host**
+
+If your host supports a build step (Netlify, Vercel, Cloudflare Pages):
+
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+
+After deployment, edit the JSON files in `data/`, commit, and push; the host will rebuild and redeploy.
 
 Full details and Cloudflare Pages: **`DEPLOY.md`**.
 
@@ -74,14 +107,16 @@ Full details and Cloudflare Pages: **`DEPLOY.md`**.
 
 ## Local development
 
-The site must be served over HTTP (browsers block `fetch()` from `file://`). From the project root:
+From the project root:
 
 ```bash
-npx serve
-# Then open http://localhost:3000
+npm install
+npm run dev
 ```
 
-Or: `python3 -m http.server 8000` then open `http://localhost:8000`.
+Then open **http://localhost:5173**. Vite serves the site and applies EJS partials on the fly.
+
+To test the built site: `npm run build` then `npm run preview` and open the URL shown (e.g. http://localhost:4173).
 
 ---
 

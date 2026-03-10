@@ -1,0 +1,18 @@
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <p class="logo"><a href="<%= basePath %>index.html"><img src="<%= basePath %>images/logo.png" alt="The Comms Collective"></a></p>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="<%= basePath %>index.html"<%= currentPage === 'home' ? ' aria-current="page"' : '' %>>Home</a></li>
+        <li><a href="<%= basePath %>events.html"<%= currentPage === 'events' ? ' aria-current="page"' : '' %>>Events</a></li>
+        <li><a href="<%= basePath %>resources.html"<%= currentPage === 'resources' ? ' aria-current="page"' : '' %>>Resources</a></li>
+        <li><a href="<%= basePath %>calendar.html"<%= currentPage === 'calendar' ? ' aria-current="page"' : '' %>>Calendar</a></li>
+        <li><a href="<%= basePath %>about.html"<%= currentPage === 'about' ? ' aria-current="page"' : '' %>>About</a></li>
+        <li><a href="<%= basePath %>team.html"<%= currentPage === 'team' ? ' aria-current="page"' : '' %>>Team</a></li>
+        <li><a href="<%= basePath %>contact.html"<%= currentPage === 'contact' ? ' aria-current="page"' : '' %>>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

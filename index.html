@@ -6,9 +6,9 @@
   <title>The Comms Collective — Network for communications professionals in Brussels</title>
   <meta name="description" content="The Comms Collective is the space for communications professionals in Brussels. Events, resources, peer exchange, and a supportive community for strategic comms, advocacy, and content.">
   <link rel="canonical" href="https://commscollective.org/">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="apple-touch-icon" href="images/logo.png">
+  <link rel="icon" type="image/svg+xml" href="<%= basePath %>favicon.svg">
+  <link rel="icon" type="image/png" href="<%= basePath %>images/logo.png">
+  <link rel="apple-touch-icon" href="<%= basePath %>images/logo.png">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="The Comms Collective">
@@ -25,35 +25,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="<%= basePath %>css/styles.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"The Comms Collective","url":"https://commscollective.org","logo":"https://commscollective.org/images/logo.png","description":"Network for communications professionals in Brussels. Events, resources, peer exchange, and community.","email":"ccbxl@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Brussels","addressCountry":"BE"}}
   </script>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <p class="logo"><a href="index.html"><img src="images/logo.png" alt="The Comms Collective"></a></p>
-      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">Menu</button>
-      <nav class="nav" id="nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="calendar.html">Calendar</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <%- include(partialPath + '/header.html') %>
 
   <main id="main-content" role="main">
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-logo-wrap">
-        <img src="images/logo.png" alt="" class="hero-logo">
+        <img src="<%= basePath %>images/logo.png" alt="" class="hero-logo">
       </div>
       <h1 id="hero-heading" class="hero-title">COMMS COLLECTIVE</h1>
       <p class="tagline">Network for communications professionals in Brussels</p>
@@ -98,30 +81,14 @@
 
     <section class="cta-block" aria-labelledby="cta-heading">
       <h2 id="cta-heading">Interested in joining the Collective?</h2>
-      <a href="contact.html" class="btn btn-outline">Contact</a>
+      <a href="<%= basePath %>contact.html" class="btn btn-outline">Contact</a>
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-inner">
-      <p class="footer-brand">The Comms Collective<span class="tm" aria-hidden="true">™</span> 2026</p>
-      <div class="footer-meta">
-        <ul class="footer-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="calendar.html">Calendar</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <p class="footer-contact"><a href="mailto:ccbxl@gmail.com">ccbxl@gmail.com</a></p>
-      </div>
-    </div>
-  </footer>
+  <%- include(partialPath + '/footer.html') %>
 
-  <script src="js/main.js"></script>
-  <script src="js/team.js"></script>
-  <script src="js/home-highlights.js"></script>
+  <script src="<%= basePath %>js/main.js"></script>
+  <script src="<%= basePath %>js/team.js"></script>
+  <script src="<%= basePath %>js/home-highlights.js"></script>
 </body>
 </html>
