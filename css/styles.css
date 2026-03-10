@@ -359,12 +359,12 @@ a:focus-visible {
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-md) var(--space-4xl);
+  padding: var(--space-md) var(--space-md) var(--space-4xl);
 }
 
 @media (min-width: 768px) {
   main {
-    padding: var(--space-xl) var(--space-xl) var(--space-4xl);
+    padding: var(--space-lg) var(--space-xl) var(--space-4xl);
   }
 }
 
@@ -375,7 +375,8 @@ main.wide {
 /* ----- Hero ----- */
 .hero {
   min-height: 0;
-  padding: var(--space-xl) var(--space-lg) var(--space-3xl);
+  max-height: 85vh;
+  padding: var(--space-sm) var(--space-lg) var(--space-xl);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -386,29 +387,30 @@ main.wide {
 
 .hero-logo-wrap {
   background: var(--bg);
-  padding: var(--space-md);
-  margin-bottom: var(--space-lg);
+  padding: var(--space-xs);
+  margin-bottom: var(--space-sm);
 }
 
 .hero-logo {
   display: block;
-  height: clamp(10rem, 32vmin, 20rem);
+  height: clamp(5rem, 18vmin, 11rem);
   width: auto;
   margin: 0 auto;
   object-fit: contain;
+  max-height: 28vh;
 }
 
 .hero-title {
-  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
-  letter-spacing: 0.2em;
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  margin: 0 0 var(--space-sm);
+  margin: 0 0 var(--space-xs);
   font-weight: 600;
 }
 
 .hero .tagline {
-  font-size: var(--text-xl);
-  line-height: var(--line-height-relaxed);
+  font-size: var(--text-sm);
+  line-height: 1.4;
   color: var(--text-secondary);
   margin: 0;
   max-width: 36em;
@@ -418,15 +420,16 @@ main.wide {
 
 @media (min-width: 768px) {
   .hero {
-    padding: var(--space-2xl) 0 var(--space-4xl);
+    padding: var(--space-md) 0 var(--space-2xl);
   }
 
   .hero-logo {
-    height: clamp(12rem, 38vmin, 26rem);
+    height: clamp(6rem, 22vmin, 14rem);
+    max-height: 32vh;
   }
 
   .hero .tagline {
-    font-size: 1.35rem;
+    font-size: var(--text-base);
   }
 }
 
@@ -454,10 +457,11 @@ main.wide {
     gap: var(--space-xl);
   }
 
-  /* Home highlights: single column so cards use full width (no narrow two-column look) */
-  #home-events.grid.grid-2,
-  #home-resources.grid.grid-2 {
-    grid-template-columns: 1fr;
+  /* Home highlights: two columns of compact horizontal (hero-style) cards */
+  #home-events.grid.grid-2.grid--hero-cards,
+  #home-resources.grid.grid-2.grid--hero-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
   }
 }
 
@@ -515,6 +519,74 @@ main.wide {
 
 .card:hover h3 {
   color: var(--text-secondary);
+}
+
+/* ----- Hero-style cards (home Events / Resources) ----- */
+.card--hero {
+  padding: var(--space-md);
+}
+
+.card--hero .card__aside {
+  margin-bottom: var(--space-sm);
+}
+
+.card--hero .card__aside .meta,
+.card--hero .card__aside .category {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.card--hero .card__aside .category {
+  text-transform: uppercase;
+  display: block;
+}
+
+.card--hero .card__main {
+  min-width: 0;
+}
+
+.card--hero .card__main h3 {
+  font-size: var(--text-base);
+  margin: 0 0 var(--space-xs);
+}
+
+.card--hero .card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 600px) {
+  .card--hero {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .card--hero .card__aside {
+    flex-shrink: 0;
+    width: 4.5rem;
+    margin-bottom: 0;
+    padding-top: 0.1em;
+  }
+
+  .card--hero .card__aside .meta {
+    line-height: 1.35;
+  }
+
+  .card--hero .card__main {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 /* ----- Team card ----- */

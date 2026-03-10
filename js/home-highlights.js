@@ -23,13 +23,15 @@
           eventsEl.innerHTML = '<p class="text-secondary">No upcoming events right now. <a href="events.html">See events</a>.</p>';
           return;
         }
-        eventsEl.innerHTML = '<ul class="grid grid-2">' + list.map(function (e) {
+        eventsEl.innerHTML = '<ul class="grid grid-2 grid--hero-cards">' + list.map(function (e) {
           var d = e.date ? new Date(e.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
           return (
-            '<li class="card">' +
-            '<p class="meta">' + escapeHtml(d) + ' · ' + escapeHtml(e.location || '') + '</p>' +
+            '<li class="card card--hero">' +
+            '<div class="card__aside"><p class="meta">' + escapeHtml(d) + '<br>' + escapeHtml(e.location || '') + '</p></div>' +
+            '<div class="card__main">' +
             '<h3><a href="events.html">' + escapeHtml(e.title) + '</a></h3>' +
-            '<p>' + escapeHtml(e.description || '') + '</p>' +
+            '<p class="card__desc">' + escapeHtml(e.description || '') + '</p>' +
+            '</div>' +
             '</li>'
           );
         }).join('') + '</ul><p><a href="events.html">All events →</a></p>';
@@ -48,13 +50,15 @@
           resourcesEl.innerHTML = '<p class="text-secondary"><a href="resources.html">Browse resources</a>.</p>';
           return;
         }
-        resourcesEl.innerHTML = '<ul class="grid grid-2">' + list.map(function (r) {
+        resourcesEl.innerHTML = '<ul class="grid grid-2 grid--hero-cards">' + list.map(function (r) {
           var link = r.link ? '<a href="' + escapeHtml(r.link) + '" rel="noopener noreferrer">' + escapeHtml(r.title) + '</a>' : escapeHtml(r.title);
           return (
-            '<li class="card">' +
-            '<span class="category">' + escapeHtml(r.category || '') + '</span>' +
+            '<li class="card card--hero">' +
+            '<div class="card__aside"><span class="category">' + escapeHtml(r.category || '') + '</span></div>' +
+            '<div class="card__main">' +
             '<h3>' + link + '</h3>' +
-            '<p>' + escapeHtml(r.description || '') + '</p>' +
+            '<p class="card__desc">' + escapeHtml(r.description || '') + '</p>' +
+            '</div>' +
             '</li>'
           );
         }).join('') + '</ul><p><a href="resources.html">All resources →</a></p>';
