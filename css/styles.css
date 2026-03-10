@@ -216,6 +216,9 @@ a:focus-visible {
 }
 
 .logo a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
   text-decoration: none;
   color: var(--text);
   transition: color var(--transition-base);
@@ -227,6 +230,13 @@ a:focus-visible {
 
 .logo a:focus-visible {
   text-decoration: none;
+}
+
+.logo img {
+  height: 2rem;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 /* ----- Nav bar ----- */
@@ -366,6 +376,14 @@ main.wide {
 .hero {
   padding: var(--space-4xl) 0;
   text-align: center;
+}
+
+.hero-logo {
+  display: block;
+  height: clamp(3rem, 8vw, 4rem);
+  width: auto;
+  margin: 0 auto var(--space-md);
+  object-fit: contain;
 }
 
 .hero-title {

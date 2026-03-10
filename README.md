@@ -38,8 +38,18 @@ commscollective/
 │   ├── eleanor.html
 │   └── simone.html
 └── images/
+    ├── logo.png        # Site logo (header + hero)
     └── team/           # Team photos (optional: camilla.jpg, celeste.jpg, etc.)
 ```
+
+---
+
+## Logo, favicon & SEO
+
+- **Logo:** Place your logo at `images/logo.png`. It appears in the header on every page and in the hero on the home page. The header logo is constrained by CSS height (2rem); the hero logo scales with viewport.
+- **Favicon:** `favicon.svg` is a simple “CC” mark used as the favicon. Browsers that prefer PNG use `images/logo.png`. Apple touch icon also uses the logo.
+- **SEO:** Every page has a unique `<title>`, `<meta name="description">`, canonical URL, Open Graph tags, and Twitter Card tags. The home page includes JSON-LD `Organization` schema.
+- **Production URL:** All canonical URLs, `og:url`, `og:image`, `twitter:image`, and the JSON-LD `url`/`logo` use `https://commscollective.org`. When you deploy, replace `commscollective.org` with your real domain (e.g. `yourusername.github.io/commscollective` or your custom domain) in each HTML file, and in `robots.txt` and `sitemap.xml`, or do a find-and-replace across the project.
 
 ---
 
