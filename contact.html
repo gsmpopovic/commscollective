@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — The Comms Collective</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <p class="logo"><a href="index.html">The Comms Collective</a></p>
+      <nav class="nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Contact &amp; Join</h1>
+    <p class="muted">Want to join the collective, suggest an event, or share a resource? Get in touch.</p>
+
+    <section class="section">
+      <h2>Send a message</h2>
+      <p>Use the form below. We’ll reply as soon as we can. For hosting: replace the form <code>action</code> with your Formspree (or other) endpoint — see README.</p>
+
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="form-block">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2>Join us</h2>
+      <p>There’s no formal membership. Come to an event, use our resources, or drop us a line. If you’d like to help run workshops or contribute content, say so in your message.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p>The Comms Collective — Brussels. No backend, no tracking — just a simple site.</p>
+    </div>
+  </footer>
+</body>
+</html>
