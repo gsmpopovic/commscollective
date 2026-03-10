@@ -6,46 +6,91 @@
   <title>The Comms Collective — Brussels</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header-inner">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
       <p class="logo"><a href="index.html">The Comms Collective</a></p>
-      <nav class="nav" aria-label="Main">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">Menu</button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="team.html">Team</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>The Comms Collective</h1>
-      <p class="tagline">A small communications collective based in Brussels.</p>
+  <main id="main-content" role="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <h1 id="hero-heading">The Comms Collective</h1>
+      <p class="tagline">A space for women in communications in Brussels—to learn, share, and connect.</p>
     </section>
 
     <section class="section">
-      <p>We bring together people who care about clear, honest, and effective communication. Whether you work in advocacy, policy, or the arts, we offer a space to learn, share, and collaborate.</p>
-      <p class="muted">Join our events, explore our resources, or get in touch to find out how you can be part of the collective.</p>
+      <p>We are a small collective based in Brussels. We believe in clear, honest communication and in supporting each other. Whether you work in advocacy, policy, public affairs, or the arts, you’re welcome here.</p>
+      <p class="text-secondary">We run events, curate resources, and hold space for conversation. No membership fees, no hierarchy—just a community of people who care about how we tell stories and shape narratives.</p>
     </section>
 
-    <section class="section">
-      <h2>What we do</h2>
-      <p>We run workshops, talks, and informal meetups on topics like strategic communications, narrative change, and audience engagement. We also curate and publish practical resources for communicators in Brussels and beyond.</p>
+    <hr class="section-divider" aria-hidden="true" />
+
+    <section class="section" aria-labelledby="events-heading">
+      <h2 id="events-heading">Events</h2>
+      <div id="home-events">
+        <p class="loading">Loading events…</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" aria-hidden="true">
+
+    <section class="section" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Resources</h2>
+      <div id="home-resources">
+        <p class="loading">Loading resources…</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" aria-hidden="true">
+
+    <section class="section" aria-labelledby="team-heading">
+      <h2 id="team-heading">Core Members</h2>
+      <div id="team-grid">
+        <p class="loading">Loading team…</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" aria-hidden="true">
+
+    <section class="cta-block" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Join us</h2>
+      <p>We welcome women working in communications in Brussels—and anyone who shares our values. Come to an event, use our resources, or drop us a line.</p>
+      <a href="contact.html" class="btn">Get in touch</a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <p>The Comms Collective — Brussels. No backend, no tracking — just a simple site.</p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p><a href="mailto:ccbxl@gmail.com">ccbxl@gmail.com</a></p>
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
   </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/team.js"></script>
+  <script src="js/home-highlights.js"></script>
 </body>
 </html>

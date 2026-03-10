@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Message House Template",
+    "category": "Templates",
+    "description": "A one-page framework to structure your key messages, proof points, and audience. Useful for campaigns, policy briefs, and press work.",
+    "link": "https://example.com/message-house"
+  },
+  {
+    "title": "Reading List: Narrative and Framing",
+    "category": "Reading",
+    "description": "Curated articles and books on framing, narrative change, and strategic communications. Updated as we find work worth sharing.",
+    "link": "https://example.com/reading-list"
+  },
+  {
+    "title": "Brussels Comms Calendar",
+    "category": "Tools",
+    "description": "Key dates and moments for EU advocacy and policy communications. Plan your campaigns around institutional rhythms.",
+    "link": "https://example.com/calendar"
+  },
+  {
+    "title": "Plain Language Checklist",
+    "category": "Templates",
+    "description": "A simple checklist to make your writing clearer and more accessible. Especially useful for policy and public-facing content.",
+    "link": "https://example.com/plain-language"
+  }
+]

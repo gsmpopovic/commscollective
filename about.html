@@ -6,50 +6,70 @@
   <title>About — The Comms Collective</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="site-header-inner">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
       <p class="logo"><a href="index.html">The Comms Collective</a></p>
-      <nav class="nav" aria-label="Main">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">Menu</button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="events.html">Events</a></li>
           <li><a href="resources.html">Resources</a></li>
           <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="team.html">Team</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content" role="main">
     <h1>About</h1>
-    <p class="tagline muted">Who we are and why we exist.</p>
+    <p class="tagline text-secondary">Our story, mission, and what we stand for.</p>
 
     <section class="section">
       <h2>Our story</h2>
-      <p>The Comms Collective started as a small group of communicators in Brussels who wanted a space to share practice, learn from each other, and push for clearer and more honest communication in advocacy and policy.</p>
-      <p>We are not a formal organisation. We are a loose collective: people who care about messaging, narrative, and audience, and who believe that good communication can support better outcomes.</p>
+      <p>The Comms Collective began with a simple observation: women in communications in Brussels often work in silos. We wanted a space where we could meet, share practice, and learn from each other without the usual posturing.</p>
+      <p>We started as a handful of people. Today we’re still small by design—a collective, not an institution. We run workshops and meetups, curate resources, and hold space for honest conversation about how we do our work.</p>
     </section>
 
-    <section class="section">
-      <h2>What we believe</h2>
-      <p>We believe in clarity over jargon, evidence over spin, and collaboration over competition. We welcome anyone working in or around communications — from NGOs and institutions to freelancers and independents — who shares that mindset.</p>
-    </section>
+    <hr class="section-divider" aria-hidden="true">
 
     <section class="section">
-      <h2>Where we are</h2>
-      <p>We are based in Brussels and our events take place here. Our resources and ideas are for anyone, anywhere.</p>
+      <h2>Mission</h2>
+      <p>We exist to support women in communications—and anyone who shares our values—with practical tools, peer learning, and a community that values clarity and collaboration over competition.</p>
+    </section>
+
+    <hr class="section-divider" aria-hidden="true">
+
+    <section class="section">
+      <h2>Philosophy and values</h2>
+      <p><strong>Clarity over jargon.</strong> We believe that good communication is clear communication. We favour plain language and honest messaging.</p>
+      <p><strong>Evidence over spin.</strong> We care about getting the story right. That means grounding our work in facts and being transparent about what we know and don’t know.</p>
+      <p><strong>Collaboration over competition.</strong> We’re here to lift each other up. We share resources, feedback, and opportunities. We don’t gatekeep.</p>
+      <p><strong>Inclusion.</strong> We welcome people at every stage of their career and from every sector—NGOs, institutions, agencies, freelancers, and beyond. If you care about communication, you belong here.</p>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer-inner">
-      <p>The Comms Collective — Brussels. No backend, no tracking — just a simple site.</p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p><a href="mailto:ccbxl@gmail.com">ccbxl@gmail.com</a></p>
+      <ul class="footer-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

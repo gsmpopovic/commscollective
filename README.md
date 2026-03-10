@@ -1,96 +1,137 @@
 # The Comms Collective — Website
 
-Minimal static website for The Comms Collective, a small communications collective based in Brussels.
+Production-ready static website for The Comms Collective, a Brussels-based communications collective. Editorial design, mobile-first, with events and resources loaded from JSON so non-technical editors can update content without touching HTML.
 
 ---
 
-## 1. Architecture recommendation: **Static site (no CMS)**
-
-- **Why:** Only a few pages, rare updates, no user accounts or dynamic content. A static site is the simplest, cheapest, and most maintainable option.
-- **No backend:** No server, database, or CMS to run or pay for. Edit HTML (or markdown if you add a simple build step later) and redeploy.
-- **Avoid WordPress:** Adds hosting cost, updates, and complexity you don’t need for this scope.
-
----
-
-## 2. Cheapest hosting: **GitHub Pages or Cloudflare Pages (both free)**
-
-| Option            | Cost   | Pros                                      | Cons                    |
-|-------------------|--------|-------------------------------------------|-------------------------|
-| **GitHub Pages**  | Free   | Integrated with Git, easy deploy from repo | 100GB bandwidth/month   |
-| **Cloudflare Pages** | Free | Unlimited bandwidth, global CDN, fast     | Slightly more setup     |
-
-**Recommendation:** Start with **GitHub Pages** — push to a repo, enable Pages in repo Settings → Pages (source: main branch, folder: `/` or `root`). No build step: point to the folder that contains `index.html`. For more traffic or performance, move to **Cloudflare Pages** (connect repo, same “static output” setup).
-
----
-
-## 3. Project structure
+## Project structure
 
 ```
 commscollective/
-├── index.html          # Home / landing
-├── events.html         # Events
-├── resources.html      # Resources
-├── about.html          # About
-├── contact.html        # Contact / Join
-├── styles.css          # Global styles
-├── README.md           # This file
-└── (optional later: js/ for contact form or small scripts)
+├── index.html          # Home (hero, intro, events/resources highlights, team, CTA)
+├── about.html          # About (story, mission, values)
+├── events.html         # Events (loaded from data/events.json)
+├── resources.html      # Resources (loaded from data/resources.json)
+├── team.html           # Team grid (loaded from data/team.json)
+├── contact.html        # Contact form (FormSubmit → ccbxl@gmail.com)
+├── .nojekyll           # Tells GitHub Pages to serve files as-is
+├── README.md
+├── css/
+│   └── styles.css      # Global editorial styles
+├── js/
+│   ├── main.js         # Mobile nav toggle
+│   ├── events.js       # Load and render events
+│   ├── resources.js    # Load and render resources
+│   ├── team.js         # Load and render team grid
+│   └── home-highlights.js  # Home page event/resource previews
+├── data/
+│   ├── events.json     # Event list (edit this to update events)
+│   ├── resources.json  # Resource list (edit this to update resources)
+│   └── team.json       # Team members (names, roles, bios, bio page links)
+├── team/               # Individual team bio pages
+│   ├── camila.html
+│   ├── anna.html
+│   └── sophie.html
+└── images/
+    └── team/           # Team photos (optional; place camila.jpg, anna.jpg, etc.)
 ```
 
-No build step. No `node_modules`. Just HTML + CSS.
+---
+
+## Local development
+
+**The site must be served over HTTP.** Browsers block `fetch()` to local files when you open HTML directly (`file://`), so events, resources, and team data won’t load.
+
+Run a local server from the project folder, then open the URL in your browser:
+
+```bash
+# Option 1: npx (Node.js)
+npx serve
+
+# Option 2: Python 3
+python3 -m http.server 8000
+# Then open http://localhost:8000
+```
+
+If you open the site via `file://`, the pages will show a short message explaining this and how to fix it.
 
 ---
 
-## 4. Fonts and color palette
+## Updating content (no code required)
 
-**Fonts (Google Fonts, loaded in HTML):**
+### Events
 
-- **Headlines (serif, editorial):** [Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville) — classic, readable, newspaper-like.
-- **Body (rounded sans-serif):** [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans) — soft, rounded, highly readable.
+Edit **`data/events.json`**. Each event has:
 
-**Colors (in `styles.css`):**
+- `title` — Event name  
+- `date` — ISO date (e.g. `"2026-05-12"`)  
+- `location` — e.g. `"Brussels"`  
+- `description` — Short description  
+- `link` — Optional signup or more-info URL (leave `""` if none)
 
-- **Background:** `#f8f6f3` (off-white, warm)
-- **Text:** `#0d1b2a` (very dark navy)
-- **Muted/secondary:** `#3d5a73`
-- **Accent (links, subtle):** `#1d3557` / hover slightly darker
-- **Borders/dividers:** `#e8e4df`
+Add or remove objects in the array. Save, commit, and push; the site will show the new list after the next deploy.
+
+### Resources
+
+Edit **`data/resources.json`**. Each resource has:
+
+- `title` — Resource name  
+- `category` — e.g. `"Templates"`, `"Reading"`, `"Tools"`  
+- `description` — Short description  
+- `link` — URL to the resource
+
+Add or remove objects in the array. Save, commit, and push.
+
+### Team
+
+- **Grid on Home and Team page:** Edit **`data/team.json`**. Each member has `slug`, `name`, `role`, `bio`, `image` (path under `images/team/`), and `bioPage` (e.g. `"team/camila.html"`).  
+- **Individual bio pages:** Duplicate an existing file in **`team/`** (e.g. `team/camila.html`), rename it (e.g. `team/jane.html`), and update the name, role, and bio text. Then add (or update) that member in **`data/team.json`** with the correct `bioPage` and optional `image`.
+
+### Team photos
+
+Place images in **`images/team/`** and use the same filenames as in `team.json` (e.g. `camila.jpg`, `anna.jpg`). If an image is missing, the site shows an initial placeholder.
 
 ---
 
-## 5. Handling updates and contact
+## Contact form
 
-- **Events:** Edit `events.html` directly. Add/remove event blocks (same HTML structure). Optional later: keep a simple `events.json` and a small script to render them, or use a static site generator (e.g. Eleventy) that reads markdown/JSON — only if you outgrow manual edits.
-- **Resources:** Same idea — edit `resources.html`; add/remove resource entries. No database.
-- **Contact form:** Use a form endpoint that sends you an email and requires no backend on your side:
-  - **[Formspree](https://formspree.io)** (free tier): set `action="https://formspree.io/f/YOUR_ID"` and `method="POST"` on the form. Formspree sends submissions to your email. Easiest.
-  - **Netlify Forms** or **Cloudflare Workers** are alternatives if you host on those platforms.
+The form on **Contact** submits to **FormSubmit** (`https://formsubmit.co/ccbxl@gmail.com`). Submissions are sent to **ccbxl@gmail.com**. No backend or server required.
 
-Replace the Formspree placeholder in `contact.html` with your Formspree form ID once you create it.
+**First time only:** FormSubmit may send a one-time confirmation email to that address; confirm it to activate. No account needed.
 
 ---
 
-## 6. Deploy
+## Deployment
 
 ### GitHub Pages
 
-1. Create a repo (e.g. `commscollective` or `commscollective.github.io`).
-2. Push this folder to the repo.
-3. **Settings → Pages → Source:** Deploy from branch `main`, folder **`/ (root)`**.
-4. Site will be at `https://<username>.github.io/<repo>/` or `https://commscollective.github.io` if repo is `commscollective.github.io`.
+1. Push the project to a GitHub repository.  
+2. In the repo: **Settings → Pages**.  
+3. **Source:** Deploy from a branch.  
+4. **Branch:** `main` (or your default branch). **Folder:** `/ (root)`.  
+5. Save. The site will be at `https://<username>.github.io/<repo>/`.  
+6. Optional: add a custom domain under **Pages** settings.
+
+No build step. The site is static HTML, CSS, and JS; GitHub serves the files as-is (`.nojekyll` ensures Jekyll doesn’t process the repo).
 
 ### Cloudflare Pages
 
-1. Sign in to [Cloudflare Dashboard](https://dash.cloudflare.com) → Pages → Create project → Connect to Git.
-2. Select the repo; build settings: **None** (static), output directory: **`/`** or the folder that contains `index.html`.
-3. Deploy. You get a `*.pages.dev` URL and can add a custom domain.
+1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com) → **Pages** → **Create project** → **Connect to Git**.  
+2. Select the repository.  
+3. **Build settings:**  
+   - Build command: leave empty (or “None”).  
+   - Build output directory: `/` (root).  
+4. Deploy. The site will be at `https://<project>.pages.dev`.  
+5. Optional: add a custom domain in the project settings.
 
 ---
 
-## Maintenance
+## Tech stack
 
-- **Content:** Edit the relevant `.html` file, commit, push. The host redeploys automatically.
-- **Styling:** All shared styles live in `styles.css`. Change colors/fonts there for site-wide updates.
-- **New page:** Copy an existing page, adjust content and `<title>`, add a link in the nav in each page.
+- **HTML** — Semantic, accessible markup.  
+- **CSS** — One stylesheet (`css/styles.css`): variables, typography, layout, responsive (mobile-first), collapsible nav.  
+- **JavaScript** — Minimal: nav toggle, and fetching/rendering of `events.json`, `resources.json`, and `team.json`. No frameworks.  
+- **Fonts** — Playfair Display (headlines), Inter (body), loaded from Google Fonts.  
+- **Colors** — Off-white `#F6F6F3`, navy text `#1B2230`, secondary text `#555`, thin dividers.
 
-No frameworks, no build step, no backend. Fast, free, and easy to maintain.
+The site is static, fast, and works without JavaScript for core content (only events, resources, and team grids need JS to populate).

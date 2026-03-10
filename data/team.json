@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "camila",
+    "name": "Camila Costa",
+    "role": "Co-founder & Strategy",
+    "bio": "Camila works with NGOs and foundations on narrative and campaign strategy. She started the collective to create a space where communicators could learn from each other without the usual posturing.",
+    "image": "images/team/camila.jpg",
+    "bioPage": "team/camila.html"
+  },
+  {
+    "slug": "anna",
+    "name": "Anna Vandenberghe",
+    "role": "Co-founder & Content",
+    "bio": "Anna is a writer and editor focused on EU policy and advocacy. She believes good communication starts with clarity and honesty—and that both are skills we can practise.",
+    "image": "images/team/anna.jpg",
+    "bioPage": "team/anna.html"
+  },
+  {
+    "slug": "sophie",
+    "name": "Sophie Laurent",
+    "role": "Events & Community",
+    "bio": "Sophie runs events and partnerships for the collective. She has a background in public affairs and now helps organisations tell their stories in ways that resonate.",
+    "image": "images/team/sophie.jpg",
+    "bioPage": "team/sophie.html"
+  }
+]
