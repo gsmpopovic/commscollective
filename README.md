@@ -18,6 +18,8 @@ Output is in **`dist/`**: plain HTML, CSS, JS, and assets. Deploy `dist/` to Net
 - **Dev:** `npm run dev` — Vite dev server with EJS partials applied.
 - **Preview build:** `npm run preview` — serves `dist/` locally.
 
+**Don’t open `index.html` (or any page) directly in the browser** (e.g. via `file://`). The HTML files are EJS templates; partials and variables are only processed when you run the dev server or build. Use `npm run dev` and open **http://localhost:5173** to view the site.
+
 ### Partials
 
 - **`partials/header.html`** — Skip link, logo, nav (uses `basePath` and `currentPage`).

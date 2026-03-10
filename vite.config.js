@@ -34,7 +34,12 @@ function ejsHtmlPlugin() {
   }
 }
 
+// For GitHub Pages project site (e.g. username.github.io/commscollective/), set base to repo name.
+const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || process.env.BASE_PATH?.replace(/\/$/, '') || ''
+const base = repoName ? `/${repoName}/` : '/'
+
 export default defineConfig({
+  base,
   root: '.',
   publicDir: 'public',
   build: {
