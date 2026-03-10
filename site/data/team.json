@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Camilla Davila",
+    "role": "Founder & Chief Strategist",
+    "photo": "images/team/camilla.jpg",
+    "shortBio": "Founder of the Comms Collective.",
+    "fullBio": "Camilla founded the Comms Collective to create a space where communications professionals could connect, learn, and grow together. She leads strategy and vision for the network. With a background in strategic communications and reputation management, she believes in the power of genuine peer exchange and collaborative learning.",
+    "profilePage": "team/camilla.html"
+  },
+  {
+    "name": "Celeste Alvi",
+    "role": "Partnerships and Innovation",
+    "photo": "images/team/celeste.jpg",
+    "shortBio": "Builds partnerships and explores new ways for the collective to collaborate.",
+    "fullBio": "Celeste builds partnerships and explores new ways for the collective to collaborate with organisations and practitioners across Brussels and beyond. She is passionate about connecting people and ideas across sectors.",
+    "profilePage": "team/celeste.html"
+  },
+  {
+    "name": "Paula Ritter-Moschütz",
+    "role": "Digital Engagement & Editorial",
+    "photo": "images/team/paula.jpg",
+    "shortBio": "Leads digital engagement and editorial direction.",
+    "fullBio": "Paula leads digital engagement and editorial direction, ensuring the collective's voice is clear, consistent, and impactful across channels. She brings experience in content creation, editorial strategy, and audience engagement.",
+    "profilePage": "team/paula.html"
+  },
+  {
+    "name": "Eleanor Mee",
+    "role": "Finance & Brand Strategy",
+    "photo": "images/team/eleanor.jpg",
+    "shortBio": "Oversees finance and brand strategy.",
+    "fullBio": "Eleanor oversees finance and brand strategy, helping the collective operate sustainably while staying true to its values and identity. She brings a sharp eye for numbers and a deep belief that good governance and clear branding go hand in hand.",
+    "profilePage": "team/eleanor.html"
+  },
+  {
+    "name": "Simone Manlove",
+    "role": "Data & Development Strategy",
+    "photo": "images/team/simone.jpg",
+    "shortBio": "Drives data and development strategy.",
+    "fullBio": "Simone drives data and development strategy, using insights and planning to help the collective evolve and respond to members' needs. She believes that good decisions start with good data—and that strategy should be inclusive and adaptive.",
+    "profilePage": "team/simone.html"
+  }
+]

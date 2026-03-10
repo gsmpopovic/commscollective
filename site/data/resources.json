@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Message House Template",
+    "category": "Templates",
+    "description": "A one-page framework to structure your key messages, proof points, and audience. Useful for campaigns, policy briefs, and press work.",
+    "link": "https://example.com/message-house"
+  },
+  {
+    "title": "Reading List: Narrative and Framing",
+    "category": "Reading",
+    "description": "Curated articles and books on framing, narrative change, and strategic communications.",
+    "link": "https://example.com/reading-list"
+  },
+  {
+    "title": "Plain Language Checklist",
+    "category": "Templates",
+    "description": "A simple checklist to make your writing clearer and more accessible. Especially useful for policy and public-facing content.",
+    "link": "https://example.com/plain-language"
+  }
+]
