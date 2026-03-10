@@ -97,8 +97,14 @@ Each team member is an object with:
 
 ---
 
+## Calendar — `data/calendar.json`
+
+The Calendar page uses `data/calendar.json` for institutional/vet dates. Edit that file to change which dates appear on the calendar.
+
+---
+
 ## Tips
 
 - **JSON syntax:** Use double quotes `"` for keys and strings. No trailing comma after the last item in an array or object.
 - **Line breaks in text:** Keep descriptions on one line, or use `\n` inside the string if you need a line break (optional).
-- **Testing:** Run a local server (e.g. `npx serve site` from the project root, or `npx serve` from inside `site/`) and open the site in your browser to check changes before deploying.
+- **Testing:** From the project root, run `npx serve` (or `python3 -m http.server 8000`) and open e.g. `http://localhost:3000` to check changes before deploying.
