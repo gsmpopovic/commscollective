@@ -515,11 +515,12 @@ main.wide {
     gap: var(--space-xl);
   }
 
-  /* Home highlights: two columns of compact horizontal (hero-style) cards */
-  #home-events.grid.grid-2.grid--hero-cards,
-  #home-resources.grid.grid-2.grid--hero-cards {
-    grid-template-columns: repeat(2, 1fr);
+  /* Home highlights: full-width stacked cards (one per row). Grid is on the injected ul. */
+  #home-events .grid.grid-2.grid--hero-cards,
+  #home-resources .grid.grid-2.grid--hero-cards {
+    grid-template-columns: 1fr;
     gap: var(--space-md);
+    max-width: 100%;
   }
 }
 

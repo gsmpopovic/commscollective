@@ -4,7 +4,7 @@
 (function () {
   var eventsEl = document.getElementById('home-events');
   var resourcesEl = document.getElementById('home-resources');
-  var basePath = '';
+  var basePath = (eventsEl && eventsEl.getAttribute('data-base')) || (resourcesEl && resourcesEl.getAttribute('data-base')) || '';
   var isFileProtocol = typeof window !== 'undefined' && window.location && window.location.protocol === 'file:';
 
   if (isFileProtocol) {

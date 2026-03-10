@@ -23,8 +23,11 @@ function ejsHtmlPlugin() {
         const partialPath = isTeam ? '../partials' : 'partials'
         const basename = path.basename(filePath, '.html')
         const currentPage = basename === 'index' ? 'home' : basename
+        // For GitHub Pages project site: scripts need this to fetch data/ and for any path logic
+        const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] || process.env.BASE_PATH?.replace(/\/$/, '') || ''
+        const siteBase = repo ? `/${repo}/` : ''
 
-        const data = { basePath, partialPath, currentPage }
+        const data = { basePath, partialPath, currentPage, siteBase }
         return ejs.render(html, data, {
           filename: filePath,
           views: [path.dirname(filePath)],
