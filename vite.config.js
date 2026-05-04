@@ -4,16 +4,12 @@ import { defineConfig } from 'vite'
 
 const projectRoot = process.cwd()
 
-const repoSegment =
-  process.env.GITHUB_REPOSITORY?.split('/')[1] ||
-  process.env.BASE_PATH?.replace(/^\//, '').replace(/\/$/, '') ||
-  ''
-
 /**
- * Base URL for deployed assets and links.
- * - Custom apex domain (e.g. commscollective.xyz): use SITE_BASE=/ so assets are /assets/... not /repo/assets/...
- * - Default GitHub project URL (user.github.io/repo/): omit SITE_BASE; uses /repo/
- * Set repo Settings → Variables → SITE_BASE to "/" when using a custom domain at the site root.
+ * Asset & script URLs on GitHub Pages:
+ * - Relative `./` works on BOTH `commscollective.xyz` (site at `/`) AND
+ *   `user.github.io/repo/` — absolute `/commscollective/...` ONLY worked on the .github.io URL.
+ *
+ * Optional override: repo variable SITE_BASE=/ forces absolute root paths (rare).
  */
 function resolveBase() {
   const raw = process.env.SITE_BASE
@@ -22,32 +18,21 @@ function resolveBase() {
     if (s === '/') return '/'
     return s.endsWith('/') ? s : `${s}/`
   }
-  return repoSegment ? `/${repoSegment}/` : '/'
+  return './'
 }
 
 const base = resolveBase()
 
-/**
- * Prefix for internal *.html and js links after build.
- * - base "/"  → "/about.html", "/js/main.js" (works on apex domains without trailing slash)
- * - base "/repo/" → "/repo/about.html"
- */
+/** Only rewrite nav/script when using absolute base paths (not `./`). */
 function githubPagesAbsoluteLinks() {
-  const root = base === '/' ? '/' : base.replace(/\/$/, '')
   return {
     name: 'github-pages-absolute-links',
     transformIndexHtml: {
       order: 'post',
       handler(html) {
-        if (base === '/') {
-          html = html.replace(
-            /href="(?!https?:\/\/|mailto:|#|\/)([^"]+\.html)"/gi,
-            (_, rel) => `href="/${rel}"`
-          )
-          html = html.replace(/src="(?!https?:\/\/)(js\/[^"]+)"/gi, (_, rel) => `src="/${rel}"`)
-          return html
-        }
-        if (!root || root === '/') return html
+        if (base === '/' || base === './') return html
+
+        const root = base.replace(/\/$/, '')
         html = html.replace(
           /href="(?!https?:\/\/|mailto:|#|\/)([^"]+\.html)"/gi,
           (_, rel) => `href="${root}/${rel}"`

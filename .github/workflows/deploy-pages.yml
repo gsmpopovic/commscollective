@@ -33,12 +33,11 @@ jobs:
       - name: Install
         run: npm ci
 
-      # Custom domain at apex (e.g. commscollective.xyz): add repo variable SITE_BASE = /
-      # so CSS/JS use /assets/... not /<repo>/assets/... (see vite.config.js).
+      # Build uses relative asset URLs (./assets/...) so commscollective.xyz and
+      # github.io/username/repo both work. Optional vars.SITE_BASE only if you need / or /repo/ overrides.
       - name: Build
         run: npm run build
         env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
           SITE_BASE: ${{ vars.SITE_BASE }}
 
       - name: Upload artifact
