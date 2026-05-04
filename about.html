@@ -6,9 +6,9 @@
   <title>About — Comms Collective</title>
   <meta name="description" content="Built by comms professionals, for comms professionals. Peer exchange, flagship events, and skills & resources in Brussels. Meet the core team.">
   <link rel="canonical" href="https://commscollective.org/about.html">
-  <link rel="icon" type="image/svg+xml" href="<%= basePath %>favicon.svg">
-  <link rel="icon" type="image/png" href="<%= basePath %>images/logo.png">
-  <link rel="apple-touch-icon" href="<%= basePath %>images/logo.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Comms Collective">
   <meta property="og:title" content="About — Comms Collective">
@@ -23,10 +23,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<%= basePath %>css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <%- include(partialPath + '/header.html') %>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <p class="logo"><a href="index.html"><img src="images/logo.png" alt="Comms Collective"></a></p>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">Menu</button>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <main id="main-content" class="wide" role="main">
     <section class="page-hero section" aria-labelledby="about-hero-heading">
@@ -34,8 +50,8 @@
       <h1 id="about-hero-heading" class="page-hero__title">Where comms people find their people.</h1>
       <p class="text-secondary page-hero__lead">The Comms Collective is the space for communications professionals of every stripe — from strategic comms and public relations to advocacy, content creation, and graphic design. All backgrounds, experiences, and specialisations have a place here.</p>
       <div class="hero-actions">
-        <a href="<%= basePath %>membership.html" class="btn btn-primary">Join the Collective</a>
-        <a href="<%= basePath %>events.html" class="btn btn-outline-inline">Upcoming events →</a>
+        <a href="membership.html" class="btn btn-primary">Join the Collective</a>
+        <a href="events.html" class="btn btn-outline-inline">Upcoming events →</a>
       </div>
     </section>
 
@@ -110,11 +126,26 @@
       </article>
     </section>
 
-    <p class="text-secondary"><a href="<%= basePath %>membership.html">Membership</a> · <a href="<%= basePath %>contact.html">Contact</a></p>
+    <p class="text-secondary"><a href="membership.html">Membership</a> · <a href="contact.html">Contact</a></p>
   </main>
 
-  <%- include(partialPath + '/footer.html') %>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-brand">© 2026 Comms Collective. All rights reserved.</p>
+      <div class="footer-meta">
+        <ul class="footer-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="membership.html">Membership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <p class="footer-contact"><a href="mailto:commscollectivebxl@gmail.com">commscollectivebxl@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
 
-  <script src="<%= basePath %>js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
