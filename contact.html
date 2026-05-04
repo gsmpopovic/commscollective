@@ -44,14 +44,14 @@
     </div>
   </header>
 
-  <main id="main-content" role="main">
+  <main id="main-content" class="wide" role="main">
     <section class="page-hero section" aria-labelledby="contact-hero-heading">
       <p class="eyebrow">Contact</p>
       <h1 id="contact-hero-heading" class="page-hero__title">Don’t be a stranger.</h1>
       <p class="text-secondary page-hero__lead">We’d love to hear from you — whether you want to join the Collective, volunteer, suggest a resource, or just say hello. Drop us a line and we’ll get back to you.</p>
     </section>
 
-    <section class="section contact-details" aria-labelledby="details-heading">
+    <section class="section contact-details contact-page__col" aria-labelledby="details-heading">
       <h2 id="details-heading">Contact details</h2>
       <dl class="contact-dl">
         <div>
@@ -69,47 +69,29 @@
       </dl>
     </section>
 
-    <section class="section">
+    <section class="section contact-page__col">
       <p>The Collective is run by a small team of dedicated volunteers. If you’d like to contribute — whether in events, comms, design, or something else — we’d love to hear from you.</p>
     </section>
 
-    <section class="contact-section">
-      <h2>Send a message</h2>
-      <p class="contact-intro">Use the form below or email us directly.</p>
+    <section class="contact-section contact-section--form" aria-labelledby="contact-form-heading">
+      <h2 id="contact-form-heading">Send a message</h2>
+      <p class="contact-intro">Use the form below — submissions go to our Google Form. Prefer email? Use the address above.</p>
 
-      <form class="form-block" action="https://formsubmit.co/ab5294dcb52851962045ff07db394d07" method="POST">
-        <input type="hidden" name="_subject" value="Comms Collective — website contact">
-        <input type="hidden" name="_next" value="https://commscollective.xyz/contact.html">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-embed" role="region" aria-label="Contact form">
+        <div class="form-embed__card">
+          <div class="form-embed__viewport">
+            <iframe
+              class="form-embed__iframe"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdeE8vh2oACRm2zznJTTh7_nS6rwGd_SS6ypEvZcoymQ3gbpA/viewform?embedded=true"
+              loading="lazy"
+              allowfullscreen
+              title="Contact the Comms Collective — Google Form">
+            </iframe>
+          </div>
+        </div>
+      </div>
 
-        <div class="form-group">
-          <label for="contact-name">Your name</label>
-          <input type="text" id="contact-name" name="name" required autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label for="contact-email">Email address</label>
-          <input type="email" id="contact-email" name="email" required autocomplete="email">
-        </div>
-        <div class="form-group">
-          <label for="contact-reason">Reason for reaching out</label>
-          <select id="contact-reason" name="reason" required>
-            <option value="" disabled selected>Select a reason</option>
-            <option value="Joining the Collective">Joining the Collective</option>
-            <option value="Volunteering">Volunteering</option>
-            <option value="Suggesting a resource or vendor">Suggesting a resource or vendor</option>
-            <option value="Partnership · event collaboration">Partnership · event collaboration</option>
-            <option value="Something else">Something else</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" rows="6" required></textarea>
-        </div>
-        <button type="submit">Send message</button>
-      </form>
-
-      <p class="form-fallback">Alternatively, email us directly at <a href="mailto:commscollectivebxl@gmail.com">commscollectivebxl@gmail.com</a>.</p>
+      <p class="form-fallback">Can’t see the form? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdeE8vh2oACRm2zznJTTh7_nS6rwGd_SS6ypEvZcoymQ3gbpA/viewform" rel="noopener noreferrer">Open it on Google</a>. Alternatively, email <a href="mailto:commscollectivebxl@gmail.com">commscollectivebxl@gmail.com</a>.</p>
     </section>
   </main>
 
