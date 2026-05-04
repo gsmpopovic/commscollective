@@ -4,30 +4,55 @@ import { defineConfig } from 'vite'
 
 const projectRoot = process.cwd()
 
-const repoName =
+const repoSegment =
   process.env.GITHUB_REPOSITORY?.split('/')[1] ||
   process.env.BASE_PATH?.replace(/^\//, '').replace(/\/$/, '') ||
   ''
-const base = repoName ? `/${repoName}/` : '/'
 
 /**
- * GitHub project pages live at https://user.github.io/<repo>/.
- * Relative links like href="about.html" break when the entry URL has no trailing slash.
- * Prefix internal *.html and /js/* script URLs with /repo so navigation always resolves.
+ * Base URL for deployed assets and links.
+ * - Custom apex domain (e.g. commscollective.xyz): use SITE_BASE=/ so assets are /assets/... not /repo/assets/...
+ * - Default GitHub project URL (user.github.io/repo/): omit SITE_BASE; uses /repo/
+ * Set repo Settings → Variables → SITE_BASE to "/" when using a custom domain at the site root.
+ */
+function resolveBase() {
+  const raw = process.env.SITE_BASE
+  if (raw !== undefined && raw !== '') {
+    const s = raw.trim()
+    if (s === '/') return '/'
+    return s.endsWith('/') ? s : `${s}/`
+  }
+  return repoSegment ? `/${repoSegment}/` : '/'
+}
+
+const base = resolveBase()
+
+/**
+ * Prefix for internal *.html and js links after build.
+ * - base "/"  → "/about.html", "/js/main.js" (works on apex domains without trailing slash)
+ * - base "/repo/" → "/repo/about.html"
  */
 function githubPagesAbsoluteLinks() {
-  const prefix = repoName ? `/${repoName}` : ''
+  const root = base === '/' ? '/' : base.replace(/\/$/, '')
   return {
     name: 'github-pages-absolute-links',
     transformIndexHtml: {
       order: 'post',
       handler(html) {
-        if (!prefix) return html
+        if (base === '/') {
+          html = html.replace(
+            /href="(?!https?:\/\/|mailto:|#|\/)([^"]+\.html)"/gi,
+            (_, rel) => `href="/${rel}"`
+          )
+          html = html.replace(/src="(?!https?:\/\/)(js\/[^"]+)"/gi, (_, rel) => `src="/${rel}"`)
+          return html
+        }
+        if (!root || root === '/') return html
         html = html.replace(
           /href="(?!https?:\/\/|mailto:|#|\/)([^"]+\.html)"/gi,
-          (_, rel) => `href="${prefix}/${rel}"`
+          (_, rel) => `href="${root}/${rel}"`
         )
-        html = html.replace(/src="(?!https?:\/\/)(js\/[^"]+)"/gi, (_, rel) => `src="${prefix}/${rel}"`)
+        html = html.replace(/src="(?!https?:\/\/)(js\/[^"]+)"/gi, (_, rel) => `src="${root}/${rel}"`)
         return html
       },
     },
@@ -50,6 +75,15 @@ export default defineConfig({
         'resources.html',
         'membership.html',
       ],
+      output: {
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.names?.[0] || assetInfo.name || ''
+          if (name.endsWith('.css')) {
+            return 'assets/styles.css'
+          }
+          return 'assets/[name]-[hash][extname]'
+        },
+      },
     },
   },
   plugins: [

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://commscollectivebxl.com/sitemap.xml
+Sitemap: https://commscollective.xyz/sitemap.xml
