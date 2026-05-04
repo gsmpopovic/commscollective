@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membership — Comms Collective</title>
+  <meta name="description" content="Join the Comms Collective — free membership for communications professionals in Brussels. Events, resources, newsletter, and community channels.">
+  <link rel="canonical" href="https://commscollective.org/membership.html">
+  <link rel="icon" type="image/svg+xml" href="<%= basePath %>favicon.svg">
+  <link rel="icon" type="image/png" href="<%= basePath %>images/logo.png">
+  <link rel="apple-touch-icon" href="<%= basePath %>images/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Comms Collective">
+  <meta property="og:title" content="Membership — Comms Collective">
+  <meta property="og:description" content="Connect, collaborate, create. Free membership for comms professionals in Brussels.">
+  <meta property="og:image" content="https://commscollective.org/images/logo.png">
+  <meta property="og:url" content="https://commscollective.org/membership.html">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Membership — Comms Collective">
+  <meta name="twitter:description" content="Join the Collective — inclusive, free, and curated.">
+  <meta name="twitter:image" content="https://commscollective.org/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="<%= basePath %>css/styles.css">
+</head>
+<body>
+  <%- include(partialPath + '/header.html') %>
+
+  <main id="main-content" class="wide" role="main">
+    <section class="page-hero section" aria-labelledby="membership-hero-heading">
+      <p class="eyebrow">Membership</p>
+      <h1 id="membership-hero-heading" class="page-hero__title">Connect. Collaborate. Create.</h1>
+      <p class="text-secondary page-hero__lead">The Collective is intentionally curated, not a catch-all, spammy listserv. We welcome communications professionals working in or around Brussels who are genuinely committed to growing and contributing to the community.</p>
+      <p>Join our membership programme — it’s completely free. Don’t miss out on the exclusive “Member’s Only” events in Brussels, happening every quarter.</p>
+    </section>
+
+    <section class="section" aria-labelledby="perks-heading">
+      <h2 id="perks-heading">Member perks</h2>
+      <ul class="perk-list">
+        <li class="perk-list__item">
+          <h3 class="perk-list__title">Access to flagship events</h3>
+          <p>Priority access and invitations to our two annual flagship events — expert panels and thematic discussions hosted with leading Brussels partner organisations.</p>
+        </li>
+        <li class="perk-list__item">
+          <h3 class="perk-list__title">Networking meet-ups</h3>
+          <p>Invitations to all informal networking sessions — quarterly drinks, monthly Coffee Corners, and spontaneous get-togethers throughout the year.</p>
+        </li>
+        <li class="perk-list__item">
+          <h3 class="perk-list__title">The resource hub</h3>
+          <p>Members-only access to trainings, webinar recordings, templates, toolkits, and the Vendor Hub — curated by the community for the community.</p>
+        </li>
+        <li class="perk-list__item">
+          <h3 class="perk-list__title">The Feed newsletter</h3>
+          <p>Our quarterly newsletter with updates on events, resources, and what’s happening across the Collective. Short, curated, and worth reading.</p>
+        </li>
+        <li class="perk-list__item">
+          <h3 class="perk-list__title">Community channels</h3>
+          <p>Access to our members-only WhatsApp community — a space to ask questions, share opportunities, and stay connected between events.</p>
+        </li>
+        <li class="perk-list__item perk-list__item--muted">
+          <h3 class="perk-list__title">Job board <span class="badge-coming">Coming soon</span></h3>
+          <p>A dedicated job board for communications roles in Brussels — posted by member organisations and vetted for quality.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section cta-inline card" aria-labelledby="join-heading">
+      <h2 id="join-heading">Ready to join?</h2>
+      <p>We are committed to making the Collective inclusive for experts, fans, and newcomers alike. Get in touch and help us build this community.</p>
+      <p><a class="btn btn-primary" href="<%= basePath %>contact.html">Get in touch →</a></p>
+    </section>
+  </main>
+
+  <%- include(partialPath + '/footer.html') %>
+
+  <script src="<%= basePath %>js/main.js"></script>
+</body>
+</html>

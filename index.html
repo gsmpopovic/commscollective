@@ -3,31 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Comms Collective — Network for communications professionals in Brussels</title>
-  <meta name="description" content="The Comms Collective is the space for communications professionals in Brussels. Events, resources, peer exchange, and a supportive community for strategic comms, advocacy, and content.">
+  <title>Comms Collective — Network for communications professionals in Brussels</title>
+  <meta name="description" content="The Comms Collective is the space for communications professionals in Brussels — peer exchange, flagship events, and a members-only resource hub.">
   <link rel="canonical" href="https://commscollective.org/">
   <link rel="icon" type="image/svg+xml" href="<%= basePath %>favicon.svg">
   <link rel="icon" type="image/png" href="<%= basePath %>images/logo.png">
   <link rel="apple-touch-icon" href="<%= basePath %>images/logo.png">
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="The Comms Collective">
-  <meta property="og:title" content="The Comms Collective — Network for communications professionals in Brussels">
-  <meta property="og:description" content="The Comms Collective is the space for communications professionals in Brussels. Events, resources, peer exchange, and a supportive community.">
+  <meta property="og:site_name" content="Comms Collective">
+  <meta property="og:title" content="Comms Collective — Network for communications professionals in Brussels">
+  <meta property="og:description" content="Where comms people find their people. Events, resources, and community for communications professionals in Brussels.">
   <meta property="og:image" content="https://commscollective.org/images/logo.png">
   <meta property="og:url" content="https://commscollective.org/">
   <meta property="og:locale" content="en_GB">
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Comms Collective — Brussels">
-  <meta name="twitter:description" content="Network for communications professionals in Brussels. Events, resources, peer exchange, and community.">
+  <meta name="twitter:title" content="Comms Collective — Brussels">
+  <meta name="twitter:description" content="Network for communications professionals in Brussels. Peer exchange, events, and resources.">
   <meta name="twitter:image" content="https://commscollective.org/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<%= basePath %>css/styles.css">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"The Comms Collective","url":"https://commscollective.org","logo":"https://commscollective.org/images/logo.png","description":"Network for communications professionals in Brussels. Events, resources, peer exchange, and community.","email":"ccbxl@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Brussels","addressCountry":"BE"}}
+  {"@context":"https://schema.org","@type":"Organization","name":"Comms Collective","url":"https://commscollective.org","logo":"https://commscollective.org/images/logo.png","description":"Network for communications professionals in Brussels.","email":"commscollectivebxl@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Brussels","addressCountry":"BE"}}
   </script>
 </head>
 <body>
@@ -42,53 +40,60 @@
       <p class="tagline">Network for communications professionals in Brussels</p>
     </section>
 
-    <section class="section who-we-are" aria-labelledby="who-heading">
-      <h2 id="who-heading">Who We Are</h2>
-      <p>The Comms Collective is the space for communications professionals of every stripe. Our field brings together a diverse range of roles, talents, and approaches.</p>
-      <p>From strategic communications, reputation management, and public relations to advocacy, content creation, and graphic design, our members are just as varied.</p>
-      <p>All backgrounds, experiences, specializations, and curiosities have a place here.</p>
-      <p>In the Collective, we seek to create space for genuine peer exchange, mentorship, and learning. Here, members can connect, share insights, and discover opportunities to strengthen their skills and expand their knowledge in a supportive, collaborative environment.</p>
-    </section>
-
-    <hr class="section-divider" aria-hidden="true" />
-
-    <section class="section" aria-labelledby="events-heading">
-      <h2 id="events-heading">Events</h2>
-      <div id="home-events" data-base="<%= siteBase %>">
-        <p class="loading">Loading events…</p>
+    <section class="section page-intro" aria-labelledby="intro-heading">
+      <h2 id="intro-heading" class="page-intro__headline">Where comms people find their people.</h2>
+      <p>The Comms Collective is the space for communications professionals of every stripe — from strategic comms and public relations to advocacy, content creation, and graphic design. All backgrounds, experiences, and specialisations have a place here.</p>
+      <div class="hero-actions">
+        <a href="<%= basePath %>membership.html" class="btn btn-primary">Join the Collective</a>
+        <a href="<%= basePath %>events.html" class="btn btn-outline-inline">Upcoming events →</a>
       </div>
     </section>
 
     <hr class="section-divider" aria-hidden="true">
 
-    <section class="section" aria-labelledby="resources-heading">
-      <h2 id="resources-heading">Resources</h2>
-      <div id="home-resources" data-base="<%= siteBase %>">
-        <p class="loading">Loading resources…</p>
-      </div>
+    <section class="section" aria-labelledby="pillars-heading">
+      <h2 id="pillars-heading">What we offer</h2>
+      <ol class="pillars">
+        <li class="pillar">
+          <span class="pillar__num" aria-hidden="true">01</span>
+          <h3 class="pillar__title">Peer exchange</h3>
+          <p>A genuine community where comms professionals share insights, swap resources, and grow together.</p>
+        </li>
+        <li class="pillar">
+          <span class="pillar__num" aria-hidden="true">02</span>
+          <h3 class="pillar__title">Flagship events</h3>
+          <p>Two substantive events per year with panels, expert discussions, and thematic deep-dives.</p>
+        </li>
+        <li class="pillar">
+          <span class="pillar__num" aria-hidden="true">03</span>
+          <h3 class="pillar__title">Skills &amp; resources</h3>
+          <p>Trainings, webinars, a vendor hub, and a growing toolkit to help you do your best work.</p>
+        </li>
+      </ol>
     </section>
 
     <hr class="section-divider" aria-hidden="true">
 
-    <section class="section" aria-labelledby="team-heading">
-      <h2 id="team-heading">Core Members</h2>
-      <div id="team-grid" data-base="<%= siteBase %>">
-        <p class="loading">Loading team…</p>
-      </div>
+    <section class="section" aria-labelledby="explore-heading">
+      <h2 id="explore-heading">Explore</h2>
+      <ul class="explore-grid">
+        <li><a class="explore-card" href="<%= basePath %>about.html"><span class="explore-card__label">About</span><span class="explore-card__desc">Who we are and the core team</span></a></li>
+        <li><a class="explore-card" href="<%= basePath %>events.html"><span class="explore-card__label">Events</span><span class="explore-card__desc">Flagship sessions and networking</span></a></li>
+        <li><a class="explore-card" href="<%= basePath %>resources.html"><span class="explore-card__label">Resources</span><span class="explore-card__desc">Trainings, vendor hub, and toolkits</span></a></li>
+        <li><a class="explore-card" href="<%= basePath %>membership.html"><span class="explore-card__label">Membership</span><span class="explore-card__desc">Perks and how to join — it’s free</span></a></li>
+        <li><a class="explore-card" href="<%= basePath %>contact.html"><span class="explore-card__label">Contact</span><span class="explore-card__desc">Say hello or suggest a resource</span></a></li>
+      </ul>
     </section>
-
-    <hr class="section-divider" aria-hidden="true">
 
     <section class="cta-block" aria-labelledby="cta-heading">
-      <h2 id="cta-heading">Interested in joining the Collective?</h2>
-      <a href="<%= basePath %>contact.html" class="btn btn-outline">Contact</a>
+      <h2 id="cta-heading">Ready to connect?</h2>
+      <p class="text-secondary cta-block__lede">We’re building a welcoming space for communications professionals to collaborate and grow together.</p>
+      <a href="<%= basePath %>contact.html" class="btn">Get in touch</a>
     </section>
   </main>
 
   <%- include(partialPath + '/footer.html') %>
 
   <script src="<%= basePath %>js/main.js"></script>
-  <script src="<%= basePath %>js/team.js"></script>
-  <script src="<%= basePath %>js/home-highlights.js"></script>
 </body>
 </html>

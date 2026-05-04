@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events — The Comms Collective</title>
-  <meta name="description" content="Upcoming events, workshops, and meetups from The Comms Collective in Brussels. Join communications professionals for peer exchange and learning.">
+  <title>Events — Comms Collective</title>
+  <meta name="description" content="Flagship panels and networking meet-ups in Brussels. Two annual flagship events, quarterly informal sessions, and Coffee Corners — open to Collective members.">
   <link rel="canonical" href="https://commscollective.org/events.html">
   <link rel="icon" type="image/svg+xml" href="<%= basePath %>favicon.svg">
   <link rel="icon" type="image/png" href="<%= basePath %>images/logo.png">
   <link rel="apple-touch-icon" href="<%= basePath %>images/logo.png">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="The Comms Collective">
-  <meta property="og:title" content="Events — The Comms Collective">
-  <meta property="og:description" content="Upcoming events, workshops, and meetups in Brussels for communications professionals.">
+  <meta property="og:site_name" content="Comms Collective">
+  <meta property="og:title" content="Events — Comms Collective">
+  <meta property="og:description" content="Flagship events and informal networking for communications professionals in Brussels.">
   <meta property="og:image" content="https://commscollective.org/images/logo.png">
   <meta property="og:url" content="https://commscollective.org/events.html">
   <meta property="og:locale" content="en_GB">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Events — The Comms Collective">
-  <meta name="twitter:description" content="Upcoming events and meetups in Brussels for communications professionals.">
+  <meta name="twitter:title" content="Events — Comms Collective">
+  <meta name="twitter:description" content="Flagship panels and networking in Brussels.">
   <meta name="twitter:image" content="https://commscollective.org/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,11 +28,55 @@
 <body>
   <%- include(partialPath + '/header.html') %>
 
-  <main id="main-content" role="main">
-    <h1>Events</h1>
-    <p class="text-secondary">Workshops, meetups, and gatherings in Brussels. New faces are always welcome.</p>
+  <main id="main-content" class="wide" role="main">
+    <section class="page-hero section" aria-labelledby="events-hero-heading">
+      <p class="eyebrow">Events</p>
+      <h1 id="events-hero-heading" class="page-hero__title">Mark your calendar.</h1>
+      <p class="text-secondary page-hero__lead">We run two kinds of events throughout the year — structured flagship sessions and informal networking get-togethers. All are open to members of the Collective.</p>
+    </section>
 
-    <div id="events-list" data-base="<%= siteBase %>"></div>
+    <section class="section" aria-labelledby="flagship-heading">
+      <h2 id="flagship-heading">Flagship events</h2>
+      <p class="lede"><strong>Expert panels &amp; discussions</strong></p>
+      <p>Two substantive events per year, hosted with partner organisations (APCO, FIPRA, and others). Each event is built around a theme — with a panel or expert discussion component that shapes the conversations and takeaways.</p>
+
+      <h3 class="h3-spaced">2026 flagship events</h3>
+      <ul class="event-cards">
+        <li class="event-cards__item">
+          <h4 class="event-cards__title">Journalism &amp; Media in the Bubble</h4>
+          <p class="event-cards__meta">Date TBC · Brussels · Partner venue</p>
+        </li>
+        <li class="event-cards__item">
+          <h4 class="event-cards__title">Policy Comms: Strategy, Buy-in &amp; Impact</h4>
+          <p class="event-cards__meta">Date TBC · Brussels · Partner venue</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="networking-heading">
+      <h2 id="networking-heading">Networking events</h2>
+      <p class="lede"><strong>Informal meet-ups &amp; coffee chats</strong></p>
+      <p>One informal meet-up per quarter — in bars, terraces, and coffee spots around Brussels. An opportunity for members to unwind, connect, and socialise without an agenda. Monthly Coffee Corners at Karsmakers starting this spring.</p>
+
+      <ul class="event-cards event-cards--simple">
+        <li class="event-cards__item">
+          <h4 class="event-cards__title">Comms &amp; Chill — Summer Edition</h4>
+          <p class="event-cards__meta">Date TBC · Woodpecker Parc Royal area</p>
+        </li>
+        <li class="event-cards__item">
+          <h4 class="event-cards__title">Coffee Corner</h4>
+          <p class="event-cards__meta">Monthly · Karsmakers · After lunch</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section luma-block card" aria-labelledby="luma-heading">
+      <h2 id="luma-heading">Calendar &amp; RSVP</h2>
+      <p>All events are listed on our LUMA page. RSVP, get reminders, and see the full calendar there.</p>
+      <!-- Replace href with your public LUMA calendar URL when ready -->
+      <p><a class="btn btn-primary luma-block__btn" href="https://lu.ma" rel="noopener noreferrer">View on LUMA →</a></p>
+    </section>
+
   </main>
 
   <%- include(partialPath + '/footer.html') %>

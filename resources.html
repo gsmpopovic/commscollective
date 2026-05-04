@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resources — The Comms Collective</title>
-  <meta name="description" content="Templates, tools, and reading for communications professionals. Message frameworks, Brussels calendar, plain language, and more from The Comms Collective.">
+  <title>Resources — Comms Collective</title>
+  <meta name="description" content="Trainings, webinars, vendor hub, and templates — a growing library for communications professionals in Brussels. Members only.">
   <link rel="canonical" href="https://commscollective.org/resources.html">
   <link rel="icon" type="image/svg+xml" href="<%= basePath %>favicon.svg">
   <link rel="icon" type="image/png" href="<%= basePath %>images/logo.png">
   <link rel="apple-touch-icon" href="<%= basePath %>images/logo.png">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="The Comms Collective">
-  <meta property="og:title" content="Resources — The Comms Collective">
-  <meta property="og:description" content="Templates, tools, and reading for communications professionals in Brussels.">
+  <meta property="og:site_name" content="Comms Collective">
+  <meta property="og:title" content="Resources — Comms Collective">
+  <meta property="og:description" content="Tools to do your best work — curated by and for communications professionals in Brussels.">
   <meta property="og:image" content="https://commscollective.org/images/logo.png">
   <meta property="og:url" content="https://commscollective.org/resources.html">
   <meta property="og:locale" content="en_GB">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Resources — The Comms Collective">
-  <meta name="twitter:description" content="Templates, tools, and reading for communications professionals.">
+  <meta name="twitter:title" content="Resources — Comms Collective">
+  <meta name="twitter:description" content="Trainings, vendor hub, and templates for comms professionals in Brussels.">
   <meta name="twitter:image" content="https://commscollective.org/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,16 +28,62 @@
 <body>
   <%- include(partialPath + '/header.html') %>
 
-  <main id="main-content" role="main">
-    <h1>Resources</h1>
-    <p class="text-secondary">Templates, reading lists, and tools we use and recommend. We add new items as we find or create them.</p>
+  <main id="main-content" class="wide" role="main">
+    <section class="page-hero section" aria-labelledby="resources-hero-heading">
+      <p class="eyebrow">Resources</p>
+      <h1 id="resources-hero-heading" class="page-hero__title">Tools to do your best work.</h1>
+      <p class="text-secondary page-hero__lead">A growing library of resources, tools, and learning materials — curated by and for communications professionals working in Brussels. Available exclusively to Collective members.</p>
+    </section>
 
-    <div id="resources-list" data-base="<%= siteBase %>"></div>
+    <p class="text-secondary">As the library grows, each category can expand into its own filterable directory. For now, members can submit suggestions via the <a href="<%= basePath %>contact.html">contact form</a>.</p>
+
+    <section class="section resource-category" aria-labelledby="cat1-heading">
+      <h2 id="cat1-heading">Trainings &amp; webinars</h2>
+      <p>Recordings, slide decks, and follow-up materials from Collective flagship events. Plus curated third-party trainings on AI tools, policy comms, storytelling, and media relations.</p>
+      <p class="tags-label">Tags</p>
+      <ul class="tag-list">
+        <li>AI &amp; emerging tech</li>
+        <li>Policy comms</li>
+        <li>Storytelling</li>
+        <li>Media relations</li>
+        <li>EU institutions</li>
+      </ul>
+    </section>
+
+    <section class="section resource-category" aria-labelledby="cat2-heading">
+      <h2 id="cat2-heading">Vendor hub</h2>
+      <p>A member-vetted directory of freelancers, agencies, tools, and service providers relevant to comms work in Brussels — from design and translation to media monitoring and event production.</p>
+      <p class="tags-label">Tags</p>
+      <ul class="tag-list">
+        <li>Design</li>
+        <li>Translation</li>
+        <li>Media monitoring</li>
+        <li>Photography</li>
+        <li>Events</li>
+      </ul>
+    </section>
+
+    <section class="section resource-category" aria-labelledby="cat3-heading">
+      <h2 id="cat3-heading">Templates &amp; toolkits</h2>
+      <p>Practical resources to help you do your job better — comms strategy templates, press release frameworks, editorial calendar guides, and stakeholder mapping tools shared by the community.</p>
+      <p class="tags-label">Tags</p>
+      <ul class="tag-list">
+        <li>Strategy templates</li>
+        <li>Press releases</li>
+        <li>Editorial planning</li>
+        <li>Messaging</li>
+      </ul>
+    </section>
+
+    <section class="section cta-inline card" aria-labelledby="suggest-heading">
+      <h2 id="suggest-heading">Have a resource to share?</h2>
+      <p>Members can suggest tools, trainings, or vendors to add to the hub.</p>
+      <p><a class="btn btn-primary" href="<%= basePath %>contact.html">Suggest a resource →</a></p>
+    </section>
   </main>
 
   <%- include(partialPath + '/footer.html') %>
 
   <script src="<%= basePath %>js/main.js"></script>
-  <script src="<%= basePath %>js/resources.js"></script>
 </body>
 </html>
