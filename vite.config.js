@@ -4,8 +4,35 @@ import { defineConfig } from 'vite'
 
 const projectRoot = process.cwd()
 
-const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || process.env.BASE_PATH?.replace(/\/$/, '') || ''
+const repoName =
+  process.env.GITHUB_REPOSITORY?.split('/')[1] ||
+  process.env.BASE_PATH?.replace(/^\//, '').replace(/\/$/, '') ||
+  ''
 const base = repoName ? `/${repoName}/` : '/'
+
+/**
+ * GitHub project pages live at https://user.github.io/<repo>/.
+ * Relative links like href="about.html" break when the entry URL has no trailing slash.
+ * Prefix internal *.html and /js/* script URLs with /repo so navigation always resolves.
+ */
+function githubPagesAbsoluteLinks() {
+  const prefix = repoName ? `/${repoName}` : ''
+  return {
+    name: 'github-pages-absolute-links',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        if (!prefix) return html
+        html = html.replace(
+          /href="(?!https?:\/\/|mailto:|#|\/)([^"]+\.html)"/gi,
+          (_, rel) => `href="${prefix}/${rel}"`
+        )
+        html = html.replace(/src="(?!https?:\/\/)(js\/[^"]+)"/gi, (_, rel) => `src="${prefix}/${rel}"`)
+        return html
+      },
+    },
+  }
+}
 
 export default defineConfig({
   base,
@@ -26,6 +53,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    githubPagesAbsoluteLinks(),
     {
       name: 'copy-static',
       closeBundle() {
@@ -43,7 +71,7 @@ export default defineConfig({
           }
         }
         ;['images', 'data', 'js'].forEach((dir) => copy(dir))
-        ;['favicon.svg', 'robots.txt', 'sitemap.xml'].forEach((file) => copy(file))
+        ;['favicon.svg', 'robots.txt', 'sitemap.xml', '.nojekyll'].forEach((file) => copy(file))
       },
     },
   ],
