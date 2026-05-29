@@ -1,0 +1,101 @@
+backend:
+  name: github
+  repo: gsmpopovic/commscollective
+  branch: main
+  # base_url is required for GitHub OAuth on non-Netlify hosts.
+  # Replace this with your Cloudflare Worker URL after deploying the OAuth proxy.
+  base_url: https://REPLACE-ME.workers.dev
+
+site_url: https://commscollective.xyz
+display_url: https://commscollective.xyz
+logo_url: https://commscollective.xyz/images/logo.png
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: events
+    label: Events
+    description: "Flagship events, networking meet-ups, and Coffee Corners. Edits commit to data/events.json."
+    files:
+      - name: events
+        label: All events
+        file: data/events.json
+        format: json
+        fields:
+          - name: events
+            label: Events
+            widget: list
+            label_singular: Event
+            summary: "{{fields.title}} — {{fields.date}}"
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Type", name: type, widget: select, options: ["flagship", "networking", "coffee-corner"], default: "networking" }
+              - { label: "Date (leave blank for TBC)", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true, required: false, default: "" }
+              - { label: "Location", name: location, widget: string }
+              - { label: "Description", name: description, widget: text }
+              - { label: "RSVP / info link (optional)", name: link, widget: string, required: false }
+
+  - name: resources
+    label: Resources
+    description: "Trainings, templates, vendor hub, and reading list."
+    files:
+      - name: resources
+        label: All resources
+        file: data/resources.json
+        format: json
+        fields:
+          - name: resources
+            label: Resources
+            widget: list
+            label_singular: Resource
+            summary: "{{fields.title}} — {{fields.category}}"
+            fields:
+              - { label: "Title", name: title, widget: string }
+              - { label: "Category", name: category, widget: select, options: ["Templates", "Reading", "Tools", "Trainings", "Vendor Hub"] }
+              - { label: "Description", name: description, widget: text }
+              - { label: "Link", name: link, widget: string }
+
+  - name: team
+    label: Core team
+    description: "Core team bios shown on the About page."
+    files:
+      - name: team
+        label: Team list
+        file: data/team.json
+        format: json
+        fields:
+          - name: team
+            label: Team members
+            widget: list
+            label_singular: Team member
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "Slug (URL-safe ID)", name: slug, widget: string, hint: "e.g. camilla — lowercase, no spaces" }
+              - { label: "Name", name: name, widget: string }
+              - { label: "Role", name: role, widget: string }
+              - { label: "Short bio", name: bio, widget: text }
+              - { label: "Photo", name: image, widget: image, required: false }
+              - { label: "Bio page", name: bioPage, widget: string, required: false }
+              - { label: "Contact link (optional)", name: contact, widget: string, required: false }
+
+  - name: calendar
+    label: Brussels calendar dates
+    description: "EU/Belgian key dates shown on the calendar."
+    files:
+      - name: calendar
+        label: Calendar
+        file: data/calendar.json
+        format: json
+        fields:
+          - { label: "Year", name: year, widget: number, value_type: int }
+          - { label: "Title", name: title, widget: string }
+          - { label: "Description", name: description, widget: text }
+          - name: dates
+            label: Dates
+            widget: list
+            label_singular: Date
+            summary: "{{fields.date}} — {{fields.label}}"
+            fields:
+              - { label: "Date", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+              - { label: "Label", name: label, widget: string }

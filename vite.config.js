@@ -59,6 +59,7 @@ export default defineConfig({
         'events.html',
         'resources.html',
         'membership.html',
+        'admin/index.html',
       ],
       output: {
         assetFileNames: (assetInfo) => {
@@ -91,6 +92,8 @@ export default defineConfig({
         }
         ;['images', 'data', 'js'].forEach((dir) => copy(dir))
         ;['favicon.svg', 'robots.txt', 'sitemap.xml', '.nojekyll'].forEach((file) => copy(file))
+        // Sveltia CMS loads /admin/config.yml at runtime — copy it next to the built admin/index.html.
+        copy('admin/config.yml', 'admin/config.yml')
       },
     },
   ],

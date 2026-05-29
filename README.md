@@ -1,136 +1,119 @@
-# The Comms Collective — Website
+# Comms Collective — Website
 
-Static website for The Comms Collective (Brussels). **Content is separated from layout:** events, resources, team, and calendar are stored in **JSON files** so non-technical users can update the site without editing HTML. No backend, no frameworks; deploy to GitHub Pages or Cloudflare Pages for free.
+Static website for the Comms Collective (Brussels), live at **https://commscollective.xyz**.
+
+The site is plain HTML/CSS/JS built with **Vite** and deployed to **GitHub Pages**. Content (events, resources, team, calendar dates) lives in **JSON files** under `data/`, and editing is done through a **Git-based CMS at `/admin/`** — non-technical editors can sign in, make changes through a form UI, and the site updates automatically. No backend, no database, no monthly platform fees.
 
 ---
 
-## Build (Vite + HTML partials)
-
-The site uses **Vite** as a tiny static builder: HTML is processed with **EJS** at build time so shared chunks (header, footer) live in **partials**. No React, no runtime—just static output.
+## Quick start
 
 ```bash
 npm install
-npm run build
+npm run dev      # http://localhost:5173 — live dev server
+npm run build    # production build → dist/
+npm run preview  # serve the built site locally
 ```
-
-Output is in **`dist/`**: plain HTML, CSS, JS, and assets. Deploy `dist/` to Netlify, Vercel, Cloudflare Pages, or GitHub Pages.
-
-- **Dev:** `npm run dev` — Vite dev server with EJS partials applied.
-- **Preview build:** `npm run preview` — serves `dist/` locally.
-
-**Don’t open `index.html` (or any page) directly in the browser** (e.g. via `file://`). The HTML files are EJS templates; partials and variables are only processed when you run the dev server or build. Use `npm run dev` and open **http://localhost:5173** to view the site.
-
-### Partials
-
-- **`partials/header.html`** — Skip link, logo, nav (uses `basePath` and `currentPage`).
-- **`partials/footer.html`** — Brand, nav links, email.
-
-Pages include them with `<%- include(partialPath + '/header.html') %>`. Root pages use `partials/`, team pages use `../partials/`; the build injects `basePath` and `currentPage` so links and `aria-current` stay correct.
 
 ---
 
-## Project structure (root = site)
+## Editing content
 
-The website lives at the **repository root**. No `site/` subfolder.
+### The easy way — `/admin/`
+1. Visit https://commscollective.xyz/admin/.
+2. Sign in with your GitHub account.
+3. Pick a section, edit the fields, hit Save.
+4. The site updates within ~1 minute (GitHub Pages rebuild).
+
+See **`CONTENT.md`** for field reference.
+
+### The fallback way — edit JSON directly
+Content files in `data/`:
+- `events.json` — flagship events, networking meet-ups, Coffee Corners
+- `resources.json` — trainings, templates, vendor hub, reading list
+- `team.json` — core team
+- `calendar.json` — Brussels/EU institutional dates
+
+Each file uses a wrapper object (e.g. `{ "events": [ … ] }`).
+
+---
+
+## Project layout
 
 ```
 /
-├── index.html
-├── about.html
-├── events.html
-├── resources.html
-├── team.html
-├── contact.html
-├── calendar.html
-├── partials/
-│   ├── header.html        ← Shared header (nav, logo)
-│   ├── footer.html        ← Shared footer
-│   └── layout.html        ← Optional base layout (reference)
-├── favicon.svg
-├── robots.txt
-├── sitemap.xml
-├── vite.config.js         ← Vite + EJS HTML plugin
-├── package.json
-├── CONTENT.md             ← How to edit content (JSON)
-├── css/
-│   └── styles.css
-├── js/
-│   ├── main.js            ← Mobile nav
-│   ├── events.js          ← Loads data/events.json
-│   ├── resources.js       ← Loads data/resources.json
-│   ├── team.js            ← Loads data/team.json
-│   ├── home-highlights.js  ← Home page events/resources preview
-│   └── calendar.js        ← Calendar page
+├── index.html, about.html, events.html, …    # site pages
+├── admin/
+│   ├── index.html                            # Sveltia CMS shell
+│   └── config.yml                            # CMS collections + fields
 ├── data/
-│   ├── events.json        ← Edit events here
-│   ├── resources.json     ← Edit resources here
-│   ├── team.json          ← Edit team members here
-│   └── calendar.json      ← Calendar / vet dates
+│   ├── events.json
+│   ├── resources.json
+│   ├── team.json
+│   └── calendar.json
+├── css/styles.css
+├── js/main.js                                # mobile nav + events loader
 ├── images/
-│   ├── logo.png
-│   └── team/              ← Team photos (optional)
-└── team/                  ← Profile pages (camilla.html, etc.)
+├── scripts/
+│   └── oauth-worker.js                       # Cloudflare Worker for CMS auth
+├── public/, dist/                            # input / build output
+├── vite.config.js
+├── package.json
+├── CONTENT.md                                # content editor reference
+└── DEPLOY.md                                 # deployment notes
 ```
 
 ---
 
-## Editing content (no HTML)
+## The CMS setup (Sveltia + GitHub OAuth)
 
-All editable content is in **`data/`**:
+The `/admin/` panel is **Sveltia CMS** — a Git-based CMS that commits content edits directly to this repo via the GitHub API. Authentication uses **GitHub OAuth**, brokered by a tiny **Cloudflare Worker** (free).
 
-- **Events** → `data/events.json` (title, date, location, description, link)
-- **Resources** → `data/resources.json` (title, category, description, link)
-- **Team** → `data/team.json` (name, role, photo, shortBio, fullBio, profilePage)
-- **Calendar** → `data/calendar.json` (institutional dates)
+### One-time setup
 
-See **`CONTENT.md`** for field descriptions, examples, and step-by-step instructions.
+1. **GitHub OAuth App**
+   - Go to https://github.com/settings/developers → New OAuth App.
+   - Homepage URL: `https://commscollective.xyz`
+   - Authorization callback URL: `https://<your-worker>.workers.dev/callback` (fill after step 2).
+   - Note the **Client ID** and generate a **Client Secret**.
 
----
+2. **Cloudflare Worker**
+   - Create a Cloudflare account (free) → Workers & Pages → Create.
+   - Paste the contents of `scripts/oauth-worker.js`.
+   - Under **Settings → Variables → Secrets**, add `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
+   - Deploy. Note the worker URL.
+   - Go back to the GitHub OAuth App and update the callback URL to `<worker-url>/callback`.
 
-## Deploy to GitHub Pages (or elsewhere)
+3. **Wire the CMS to the Worker**
+   - In `admin/config.yml`, set `backend.base_url` to your worker URL.
+   - Commit + push.
 
-**Option A — Deploy the built output**
+### Adding editors
+- Editors need a GitHub account (free, ~2 minutes to create).
+- Add them as a **collaborator** on the repo (Settings → Collaborators).
+- They visit `/admin/`, sign in with GitHub, and start editing.
 
-1. Run `npm run build`. The static site is in **`dist/`**.
-2. Deploy `dist/` to your host (e.g. GitHub Pages: use a branch or Action that builds and publishes `dist/`).
-
-**Option B — Build on the host**
-
-If your host supports a build step (Netlify, Vercel, Cloudflare Pages):
-
-- **Build command:** `npm run build`
-- **Publish directory:** `dist`
-
-After deployment, edit the JSON files in `data/`, commit, and push; the host will rebuild and redeploy.
-
-Full details and Cloudflare Pages: **`DEPLOY.md`**.
-
----
-
-## Local development
-
-From the project root:
-
-```bash
-npm install
-npm run dev
-```
-
-Then open **http://localhost:5173**. Vite serves the site and applies EJS partials on the fly.
-
-To test the built site: `npm run build` then `npm run preview` and open the URL shown (e.g. http://localhost:4173).
+Every save in the CMS = a git commit on `main`, so there's full audit trail and rollback for free.
 
 ---
 
-## Design
+## Deploy
 
-- **Background:** #F6F6F3  
-- **Text:** #1B2230  
-- **Fonts:** Playfair Display (headlines), Inter (body)  
-- **Layout:** Mobile-first, responsive, collapsible nav, inverted footer, subtle hover states  
+The site auto-deploys from `main` to GitHub Pages via the `.github/workflows/` action. The custom domain `commscollective.xyz` is configured via `CNAME`.
+
+See **`DEPLOY.md`** for the full deployment notes.
 
 ---
 
-## Contact form
+## Tech notes
 
-The contact page form posts to **FormSubmit** (`https://formsubmit.co/ccbxl@gmail.com`). Submissions go to **ccbxl@gmail.com**. No backend required; confirm the one-time FormSubmit email to that address when first using it.
+- **Build:** Vite 6 with a small custom plugin that copies `images/`, `data/`, `js/`, and `admin/config.yml` into `dist/`.
+- **Base path:** assets use relative URLs (`./`) so the same build works on both `commscollective.xyz/` and `gsmpopovic.github.io/commscollective/`.
+- **Events page:** `events.html` has empty `<ul data-events-list="…">` containers; `js/main.js` fetches `data/events.json` and renders cards filtered by `type` (`flagship`, `networking`, `coffee-corner`).
+- **Design:** Inter (body) + Playfair Display (headlines); background `#F6F6F3`; text `#1B2230`; mobile-first.
+
+---
+
+## Contact
+
+`commscollectivebxl@gmail.com`

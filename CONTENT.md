@@ -1,110 +1,106 @@
-# Editing content (no HTML required)
+# Editing content
 
-All editable content lives in **JSON files** in the `data/` folder. Update these files and redeploy; the site will show the new content automatically.
+## The easy way — use the admin panel
+
+Once the CMS is wired up, the simplest way to edit content is:
+
+1. Go to **https://commscollective.xyz/admin/** (or whichever URL the site is live at).
+2. Sign in with your GitHub account.
+3. Pick a section (Events, Resources, Team, Calendar), edit the fields, hit **Save**.
+4. The site updates automatically within a couple of minutes.
+
+You never need to touch JSON, Git, or HTML if you go through `/admin/`.
 
 ---
 
-## Events — `data/events.json`
+## The fallback way — edit the JSON files directly
 
-Events are listed in chronological order (you can reorder the array). Each event is an object with:
+For anyone comfortable with JSON, the underlying content lives in the `data/` folder. Each file has an outer object with a single key that wraps a list of items.
 
-| Field | Required | Description |
-|-------|----------|-------------|
-| `title` | Yes | Event name |
-| `date` | Yes | ISO date: `"YYYY-MM-DD"` (e.g. `"2026-05-12"`) |
-| `location` | Yes | e.g. `"Brussels"` |
-| `description` | Yes | Short description (one or two sentences) |
-| `link` | No | Sign-up or more-info URL. Use `""` if none |
-
-**Example:**
+### `data/events.json`
 
 ```json
 {
-  "title": "Women in Public Affairs Meetup",
-  "date": "2026-05-12",
-  "location": "Brussels",
-  "description": "An informal gathering for communications professionals.",
-  "link": "https://example.com/signup"
+  "events": [
+    {
+      "title": "Coffee Corner",
+      "type": "coffee-corner",
+      "date": "2026-04-15",
+      "location": "Karsmakers · After lunch",
+      "description": "Monthly drop-in catch-up.",
+      "link": ""
+    }
+  ]
 }
 ```
 
-- **Add an event:** Add a new object to the array (after the last `},`).
-- **Remove an event:** Delete that object and the comma before or after it.
-- **Edit:** Change the values; keep the keys and quotes.
+| Field | Required | Notes |
+|-------|----------|-------|
+| `title` | Yes | Event name. |
+| `type` | Yes | One of: `flagship`, `networking`, `coffee-corner`. Controls which section of the Events page the card appears under. |
+| `date` | No | ISO `"YYYY-MM-DD"`. Leave as `""` to display "Date TBC". |
+| `location` | Yes | e.g. `"Brussels · Partner venue"`. |
+| `description` | Yes | One or two sentences. |
+| `link` | No | RSVP/info URL. Use `""` if none. |
 
----
-
-## Resources — `data/resources.json`
-
-Each resource is an object with:
-
-| Field | Required | Description |
-|-------|----------|-------------|
-| `title` | Yes | Resource name |
-| `category` | Yes | e.g. `"Templates"`, `"Reading"`, `"Tools"` |
-| `description` | Yes | Short description |
-| `link` | Yes | Full URL to the resource (external link) |
-
-**Example:**
+### `data/resources.json`
 
 ```json
 {
-  "title": "Message House Template",
-  "category": "Templates",
-  "description": "A one-page framework to structure your key messages.",
-  "link": "https://example.com/message-house"
+  "resources": [
+    {
+      "title": "Message House Template",
+      "category": "Templates",
+      "description": "Short description.",
+      "link": "https://example.com/..."
+    }
+  ]
 }
 ```
 
-- **Add a resource:** Add a new object to the array.
-- **Remove:** Delete the object and fix commas.
-- **Internal link:** Use a relative path like `"calendar.html"` if the resource is another page on the site.
+| Field | Required | Notes |
+|-------|----------|-------|
+| `title` | Yes | Resource name. |
+| `category` | Yes | One of: `Templates`, `Reading`, `Tools`, `Trainings`, `Vendor Hub`. |
+| `description` | Yes | Short description. |
+| `link` | Yes | URL or relative path (e.g. `events.html`). |
 
----
-
-## Team — `data/team.json`
-
-Each team member is an object with:
-
-| Field | Required | Description |
-|-------|----------|-------------|
-| `name` | Yes | Full name |
-| `role` | Yes | Job title / role |
-| `photo` | No | Path to image, e.g. `"images/team/camilla.jpg"`. If missing, a letter placeholder is shown. |
-| `shortBio` | Yes | One short sentence for the team grid card |
-| `fullBio` | No | Longer bio (used if you later generate profile pages from JSON; for now profile pages are static HTML) |
-| `profilePage` | Yes | Path to their profile page, e.g. `"team/camilla.html"` |
-
-**Example:**
+### `data/team.json`
 
 ```json
 {
-  "name": "Camilla Davila",
-  "role": "Founder & Chief Strategist",
-  "photo": "images/team/camilla.jpg",
-  "shortBio": "Founder of the Comms Collective.",
-  "fullBio": "Camilla founded the Comms Collective to create a space where...",
-  "profilePage": "team/camilla.html"
+  "team": [
+    {
+      "slug": "camilla",
+      "name": "Camilla Davila",
+      "role": "Founder & Chief Strategist",
+      "bio": "Short bio for the team grid.",
+      "image": "images/team/camilla.jpg",
+      "bioPage": "team/camilla.html",
+      "contact": ""
+    }
+  ]
 }
 ```
 
-- **Add a member:**  
-  1. Add an object to `data/team.json` with `name`, `role`, `shortBio`, `profilePage` (and optional `photo`, `fullBio`).  
-  2. Create a new profile page by copying `team/camilla.html` to e.g. `team/jane.html`, then update the name, role, and bio text inside that file.  
-  3. Set `profilePage` to `"team/jane.html"`.
+| Field | Required | Notes |
+|-------|----------|-------|
+| `slug` | Yes | URL-safe identifier — lowercase, no spaces. |
+| `name` | Yes | Full name. |
+| `role` | Yes | Job title / role. |
+| `bio` | Yes | Short bio (one or two sentences) for the grid card. |
+| `image` | No | Path to image, e.g. `"images/team/camilla.jpg"`. Letter placeholder used if missing. |
+| `bioPage` | No | Path to full profile page, e.g. `"team/camilla.html"`. |
+| `contact` | No | Optional contact link. |
 
-- **Team photos:** Put image files in `images/team/` (e.g. `camilla.jpg`) and set `photo` to `"images/team/camilla.jpg"`. If the file is missing, the site shows an initial letter.
+### `data/calendar.json`
 
----
-
-## Calendar — `data/calendar.json`
-
-The Calendar page uses `data/calendar.json` for institutional/vet dates. Edit that file to change which dates appear on the calendar.
+Single object with metadata and a `dates` list of `{ date, label }` items.
 
 ---
 
 ## Tips
 
-- **JSON syntax:** Use double quotes `"` for keys and strings. No trailing comma after the last item in an array or object.
-- **Line breaks in text:** Keep descriptions on one line, or use `\n` inside the string if you need a line break (optional).
-- **Testing:** From the project root, run `npx serve` (or `python3 -m http.server 8000`) and open e.g. `http://localhost:3000` to check changes before deploying.
+- **JSON syntax**: use double quotes `"`, no trailing commas after the last item in a list.
+- **Testing locally**: from the project root, run `npm run dev` and open the URL Vite prints. Edits to JSON files appear after a reload.
+- **The CMS commits straight to GitHub** — every edit is a commit you can roll back to.
