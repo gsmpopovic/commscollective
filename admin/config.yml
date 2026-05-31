@@ -2,9 +2,8 @@ backend:
   name: github
   repo: gsmpopovic/commscollective
   branch: main
-  # base_url is required for GitHub OAuth on non-Netlify hosts.
-  # Replace this with your Cloudflare Worker URL after deploying the OAuth proxy.
-  base_url: https://REPLACE-ME.workers.dev
+  # OAuth proxy: Cloudflare Worker (scripts/oauth-worker.js).
+  base_url: https://commscollective-auth.george-937.workers.dev
 
 site_url: https://commscollective.xyz
 display_url: https://commscollective.xyz
